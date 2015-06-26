@@ -1,0 +1,14 @@
+{
+  "name": "shirtie",
+  "version": "0.0.0",
+  "description": "Shirtie is awesome",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.13.0"
+  }
+}
