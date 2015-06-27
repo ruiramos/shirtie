@@ -6,11 +6,11 @@ var fs = require('fs'),
 var dir = path.resolve(__dirname, '../../uploads') + '/' ;
 
 var ImageGenerator = {
-  getResizedStream: function(imgName, fn){
+  getResizedStream: function(imgName, stream){
     gm(dir + imgName)
       .resize(600, 600)
-      .stream(fn);
-    // .pipe(writeStream);
+      .stream()
+      .pipe(stream);
   },
 
   generateImage: function(imgName, quote, author){
