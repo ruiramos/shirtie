@@ -15,7 +15,7 @@ module.exports = {
 
     reader.onloadend = function () {
 
-      request.post('/upload')
+      request.post(host + '/upload')
         .attach(reader.result, 'image.png')
         .end(callback);
     }
