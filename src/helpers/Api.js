@@ -11,15 +11,29 @@ module.exports = {
   },
 
   postMultipartImage: function(image, callback){
-    var reader = new FileReader();
+    // var reader = new FileReader();
 
-    reader.onloadend = function () {
+    // reader.onloadend = function () {
+    //   request.post(host + '/upload')
+    //     .attach(reader.result, 'image.png')
+    //     .end(callback);
+    // }
 
-      request.post(host + '/upload')
-        .attach(reader.result, 'image.png')
-        .end(callback);
-    }
+    // reader.readAsArrayBuffer(image);
+    var data = new FormData();
+    data.append('img', image);
+    console.log(image);
 
-    reader.readAsArrayBuffer(image);
+    jQuery.ajax({
+        url: host + '/upload',
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false,
+        type: 'POST',
+        success: function(data){
+            console.log(data);
+        }
+    });
   }
 };
