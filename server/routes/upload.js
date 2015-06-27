@@ -21,6 +21,8 @@ var imageUpload = function(req, res, next){
   request(options, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       res.send(response.body);
+    } else {
+      res.status(500).send(response.body);
     }
   });
 };
