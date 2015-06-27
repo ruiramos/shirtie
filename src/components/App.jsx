@@ -25,7 +25,9 @@ export class App extends BaseComponent {
     imageToBase64(file, function(data){
       that.refs.imageContainer.getDOMNode().src = data;
       ImageActions.postImage(data, function(error, response){
-        console.log('got response', response);
+        if (response.status === 200 && response.body.status_code === 'OK') {
+          console.log('got response', response.body.results[0].result.tag);
+        }
       });
     });
   }
