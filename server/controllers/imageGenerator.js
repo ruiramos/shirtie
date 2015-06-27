@@ -7,9 +7,9 @@ var dir = path.resolve(__dirname, '../../uploads') + '/' ;
 
 var ImageGenerator = {
   getResizedStream: function(imgName, fn){
-    return gm(dir + imgName)
-    .resize(600, 600)
-    .stream(fn);
+    gm(dir + imgName)
+      .resize(600, 600)
+      .stream(fn);
     // .pipe(writeStream);
   },
 
