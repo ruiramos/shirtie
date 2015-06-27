@@ -20,6 +20,6 @@ module.exports = {
         .end(callback);
     }
 
-    reader.readAsBinaryString(image);
+    reader.readAsArrayBuffer(image);
   }
 };
