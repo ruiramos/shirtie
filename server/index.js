@@ -10,7 +10,7 @@ app.use(function(req, res, next) {
 });
 
 // Parse body in post requests
-app.use(bodyParser);
+app.use(bodyParser.raw());
 
 // Endpoints
 app.get('/quotes', require('./routes/quotes'));
