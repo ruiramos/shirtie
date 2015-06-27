@@ -35,10 +35,11 @@ var imageUpload = function(req, res, next){
 
   function handleTags(err, response, body) {
     var results = JSON.parse(body).results;
-    console.log('TAGS', results[0].result.tag.classes);
+    // console.log('TAGS', results[0].result.tag);
     // Select a tag (has to be improved)
     var tags = [
-      results[0].result.tag.classes[0]
+      results[0].result.tag.classes[0],
+      results[0].result.tag.classes[1]
     ];
 
     // Assign tags to query
@@ -49,9 +50,6 @@ var imageUpload = function(req, res, next){
     req.query.imageName = image.name;
 
     next();
-
-    // res.set('Content-Type','application/json');
-    // res.send(body.results[0].result.tag);
   }
 };
 
