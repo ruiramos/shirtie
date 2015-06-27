@@ -3,7 +3,11 @@ var request  = require('request'),
     config   = require('../config.json'),
     FormData = require('form-data'),
     fs       = require('fs'),
-    path     = require('path');
+    path     = require('path'),
+    imageCtrl= require('../controllers/imageGenerator');
+
+// List of black-listed meaningless tags
+var exclude = ['black and white', 'isolated'];
 
 var imageUpload = function(req, res, next){
   var image = req.files.img;
@@ -12,7 +16,6 @@ var imageUpload = function(req, res, next){
     uri: 'https://api.clarifai.com/v1/tag/',
     method: 'POST',
     headers: {
-      // 'Content-Type':  'Content-Type:multipart/form-data; boundary=----WebKitFormBoundaryBToojuHvil2KJYIJ',
       'Authorization': 'Bearer ' + config.clarifai_token
     }
   };
@@ -21,7 +24,9 @@ var imageUpload = function(req, res, next){
   var form = new FormData();
 
   // Append image to form
-  form.append("encoded_data", fs.createReadStream(path.resolve(__dirname, "../../" + image.path)));
+  console.log(image);
+  // form.append("encoded_data", fs.createReadStream(path.resolve(__dirname, "../../" + image.name)));
+  form.append("encoded_data", fs.createReadStream(path.resolve(__dirname, "../../" + image.name)));
 
   form.getLength(function(err, length){
     // Handle errors
@@ -42,6 +47,7 @@ var imageUpload = function(req, res, next){
   });
 
   function requestCallback(err, response, body) {
+    // We have the tags
     res.send(body);
   }
 };
