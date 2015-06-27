@@ -6,4 +6,4 @@ module.exports = {
     Api.postImage(image, fn);
   }
 
-}
+};
