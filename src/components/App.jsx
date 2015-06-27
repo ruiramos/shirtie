@@ -22,12 +22,14 @@ export class App extends BaseComponent {
         file = files[0];
     }
 
-    imageToBase64(file, function(data){
-      that.refs.imageContainer.getDOMNode().src = data;
-      ImageActions.postImage(data, function(response){
-        console.log('got response', response)
-      })
-    });
+    ImageActions.postImage(file, (res) => console.log(res));
+
+    // imageToBase64(file, function(data){
+    //   that.refs.imageContainer.getDOMNode().src = data;
+    //   ImageActions.postImage(data, function(response){
+    //     console.log('got response', response)
+    //   })
+    // });
   }
 
   snapPhoto(){
