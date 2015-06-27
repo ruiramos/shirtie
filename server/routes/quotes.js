@@ -1,11 +1,21 @@
 var request = require('request'),
     qs      = require('querystring'),
+    _       = require('underscore'),
     config  = require('../config.json');
 
 var defaultTags = [/*'funny'*/];
 
+var CHARACTER_LIMIT = 150;
+
 function _selectQuote(quotes){
   // @todo
+
+  // Return the shortest quote.
+  // _.min(quotes, function(quote){
+  //   return quote.quote.length;
+  // });
+
+  // Return random quote.
   return quotes[Math.floor(quotes.length * Math.random())];
 }
 
@@ -41,8 +51,8 @@ var getQuotes = function(req, res, next){
 
           // Filter quotes by length
           .filter(function(quote){
-            return quote.quote && quote.quote.length;
-          })
+            return quote.quote && quote.quote.length <= CHARACTER_LIMIT;
+          });
 
         req.query.quote = _selectQuote(quotes);
         next();

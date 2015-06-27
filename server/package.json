@@ -20,6 +20,8 @@
     "gm": "^1.18.1",
     "multer": "^0.1.8",
     "request": "git://github.com/ruiramos/request.git",
-    "stdio": "^0.2.7"
+    "stdio": "^0.2.7",
+    "stdio": "^0.2.7",
+    "underscore": "^1.8.3"
   }
 }
