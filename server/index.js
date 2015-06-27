@@ -9,8 +9,8 @@ app.use(function(req, res, next) {
   next();
 });
 
-// Parse body in post requests
-app.use(bodyParser.raw());
+// Parse body JSON in post requests
+app.use(bodyParser.json());
 
 // Endpoints
 app.get('/quotes', require('./routes/quotes'));
