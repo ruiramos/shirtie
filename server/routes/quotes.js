@@ -25,6 +25,7 @@ var getQuotes = function(req, res, next){
 
   request(options, function (error, response, body) {
     if (!error && response.statusCode == 200) {
+      console.log('QUOTE', body, req.query);
       res.send(
         body.results
           // map quote data
@@ -35,7 +36,7 @@ var getQuotes = function(req, res, next){
 
           // Filter quotes by length
           .filter(function(quote){
-            return quote.quote.length;
+            return quote.quote && quote.quote.length;
           })
       );
     }

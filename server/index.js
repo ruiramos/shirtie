@@ -15,7 +15,7 @@ app.use(function(req, res, next) {
 
 // Endpoints
 app.get('/quotes', require('./routes/quotes'));
-app.post('/upload', multer({ dest: './uploads/'}), require('./routes/upload'));
+app.post('/upload', multer({ dest: './uploads/'}), require('./routes/upload'), require('./routes/quotes'));
 
 var server = app.listen(3000, function () {
   var address = server.address();

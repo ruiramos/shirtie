@@ -31,38 +31,28 @@ var imageUpload = function(req, res, next){
       "encoded_data": fs.createReadStream(path.resolve(__dirname, "../../uploads/" + image.name.split('.')[0]+ '_r.' + image.extension))
     };
 
-    var r = request(options, requestCallback);
+    var r = request(options, handleTags);
   });
 
+  function handleTags(err, response, body) {
+    body = JSON.parse(body);
 
-    // // Create new form
-    // var form = new FormData();
+    // Select a tag (has to be improved)
+    var tags = [
+      body.results[0].result.tag.classes[0]
+    ];
+    
+    console.log('USE TAGS: ', tags.join(', '));
 
-    // // Append image to form
-    // form.append("encoded_data", fs.createReadStream(path.resolve(__dirname, "../../uploads/" + image.name.split('.')[0]+ '_r.' + image.extension)));
+    // Assign tags to query
+    req.query = {
+      q:tags.join(' ')
+    };
 
-    // // Submit form
-    // form.getLength(function(err, length){
-    //   // Handle errors
-    //   if (err) {
-    //     return requestCallback(err);
-    //   }
+    next();
 
-    //   // Create response
-    //   var r = request(options, requestCallback);
-    //   r._form = form;
-
-    //   // Set extra form headers
-    //   r.setHeader('content-length', length);
-    //   var headers = form.getHeaders();
-    //   for(var header in headers){
-    //     r.setHeader(header, headers[header]);
-    //   }
-    //});
-
-  function requestCallback(err, response, body) {
-    // We have the tags
-    res.send(body);
+    // res.set('Content-Type','application/json');
+    // res.send(body.results[0].result.tag);
   }
 };
 
