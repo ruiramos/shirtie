@@ -24,26 +24,37 @@ var imageUpload = function(req, res, next){
   var form = new FormData();
 
   // Append image to form
-  console.log(image);
+  var bufs = [];
   // form.append("encoded_data", fs.createReadStream(path.resolve(__dirname, "../../" + image.name)));
-  form.append("encoded_data", fs.createReadStream(path.resolve(__dirname, "../../" + image.name)));
 
-  form.getLength(function(err, length){
-    // Handle errors
-    if (err) {
-      return requestCallback(err);
-    }
+  imageCtrl.getResizedStream(image.name, function(err, stdout, stderr){
+    console.log('!!!!!!!!!!!!!!!!!')
+    console.log(arguments);
+    stdout.on('data', function(d){bufs.push(d); });
 
-    // Create response
-    var r = request(options, requestCallback);
-    r._form = form;
+    stdout.on('end', function(){
+      var buf = new Buffer(bufs);
+    
+      form.append("encoded_data", buf);
+    
+      form.getLength(function(err, length){
+        // Handle errors
+        if (err) {
+          return requestCallback(err);
+        }
 
-    // Set extra form headers
-    r.setHeader('content-length', length);
-    var headers = form.getHeaders();
-    for(var header in headers){
-      r.setHeader(header, headers[header]);
-    }
+        // Create response
+        var r = request(options, requestCallback);
+        r._form = form;
+
+        // Set extra form headers
+        r.setHeader('content-length', length);
+        var headers = form.getHeaders();
+        for(var header in headers){
+          r.setHeader(header, headers[header]);
+        }
+      });
+    });
   });
 
   function requestCallback(err, response, body) {
