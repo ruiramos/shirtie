@@ -19,20 +19,36 @@ var ImageGenerator = {
 
     gm(dir + imgName)
       .resize(600, 600)
-      .size(function(err, size){
-        gm(dir + imgName)
-          .extent(size.width, size.height + marginBottom + lineHeight * 2)
-          .font("Helvetica", 52)
-          .stroke('#000')
-          .strokeWidth(1)
-          .drawText(20, size.height + marginBottom, quote)
-          .font("Arial", 30)
-          .drawText(20, size.height + marginBottom + lineHeight, author)
-          .write(dir + 'new.png', function (err) {
-            if (!err) console.log('done');
-            else console.log(err)
-          });
+      .stream(function(err, stdout){
+        gm(stdout).size({bufferStream: true}, function(err, size){
+
+          this
+            .extent(size.width, size.height + marginBottom + lineHeight * 2)
+            .gravity("South")
+            .font("Noteworthy-Light", 40)
+            .stroke('#000')
+            .strokeWidth(1)
+            .comment(quote)
+            .write(dir + 'new.png', function (err) {
+              if (!err) console.log('done');
+              else console.log(err)
+            });
+
+          // this
+          //   .extent(size.width, size.height + marginBottom + lineHeight * 2)
+          //   .font("Noteworthy-Light", 40)
+          //   .stroke('#000')
+          //   .strokeWidth(1)
+          //   .drawText(20, size.height + marginBottom, quote)
+          //   .font("PT-Sans-Italic", 18)
+          //   .drawText(20, size.height + marginBottom + lineHeight, author)
+            // .write(dir + 'new.png', function (err) {
+            //   if (!err) console.log('done');
+            //   else console.log(err)
+            // });
+        })
       })
+
 
   }
 }
