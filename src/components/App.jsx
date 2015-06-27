@@ -22,7 +22,7 @@ export class App extends BaseComponent {
         file = files[0];
     }
 
-    ImageActions.postImage(file, (res) => console.log(res));
+    ImageActions.postImage(file, (err, res) => console.log(res));
 
     // imageToBase64(file, function(data){
     //   that.refs.imageContainer.getDOMNode().src = data;
