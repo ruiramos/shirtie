@@ -11,18 +11,8 @@ module.exports = {
   },
 
   postMultipartImage: function(image, callback){
-    // var reader = new FileReader();
-
-    // reader.onloadend = function () {
-    //   request.post(host + '/upload')
-    //     .attach(reader.result, 'image.png')
-    //     .end(callback);
-    // }
-
-    // reader.readAsArrayBuffer(image);
     var data = new FormData();
     data.append('img', image);
-    console.log(image);
 
     jQuery.ajax({
         url: host + '/upload',
