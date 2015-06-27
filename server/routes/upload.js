@@ -3,7 +3,7 @@ var request  = require('request'),
     config   = require('../config.json');
 
 var imageUpload = function(req, res, next){
-  var image = req.body.image;//.replace(/^data:image\/png;base64,/, "");
+  var image  = req.body.image.split(',')[1];
 
   var options = {
     uri: 'https://api.clarifai.com/v1/tag/',
@@ -19,7 +19,6 @@ var imageUpload = function(req, res, next){
 
   // Get tags
   request(options, function (error, response, body) {
-    console.log(body.results[0].result);
     if (!error && response.statusCode == 200) {
       res.send(response.body);
     }
