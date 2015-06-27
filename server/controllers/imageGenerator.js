@@ -44,7 +44,7 @@ var ImageGenerator = {
       })
   },
 
-  generateImage: function(imgName, quoteObj){
+  generateImage: function(imgName, quoteObj, callback){
     var marginBottom = 38,
         arr = imgName.split('.'),
         imgFileName = arr[0],
@@ -72,6 +72,12 @@ var ImageGenerator = {
                     exec('rm '+dir + _getCaptionName(imgName));
                     exec('rm '+dir + _getAuthorFileName(imgName));
                     exec('rm '+dir + _getResizedFileName(imgName));
+
+                    callback(null, {
+                      imageName: imgFileName +'_final.' + ext,
+                      fullPath: dir + imgFileName +'_final.' + ext,
+                      publicUri: 'todo'
+                    });
 
                   });
               })

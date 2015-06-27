@@ -20,11 +20,31 @@ app.post('/upload',
   multer({ dest: './uploads/'}),
   require('./routes/upload'),
   require('./routes/quotes'),
-  function(req, res){
-    console.log(req.query.quote);
-    ImageGenerator.generateImage(req.query.imageName, req.query.quote);
-    res.send({ok: 1});
-  });
+  function(req, res, next){
+    console.log('using quote:', req.query.quote);
+
+    ImageGenerator.generateImage(req.query.imageName, req.query.quote, function(err, finalImage){
+      req.query.art = finalImage;
+      next();
+    });
+
+  },
+  require('./routes/kitely'),
+  function(req, res){ res.send({error: null, art: req.query.art.publicUri}) }
+  );
+
+app.get('/kitely',
+  function(req, res, next){
+    req.query = {
+      art: {
+        fullPath: '/Volumes/Work/server/projects/shirtie/uploads/test_final.jpg'
+      }
+    };
+    next();
+  },
+  require('./routes/kitely'),
+  function(req, res){ res.send({error: null, art: req.query.art.publicUri}) }
+  )
 
 var server = app.listen(3000, function () {
   var address = server.address();

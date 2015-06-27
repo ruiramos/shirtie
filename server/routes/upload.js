@@ -1,7 +1,6 @@
 var request  = require('request'),
     qs       = require('querystring'),
     config   = require('../config.json'),
-    FormData = require('form-data'),
     fs       = require('fs'),
     path     = require('path'),
     imageCtrl= require('../controllers/imageGenerator');

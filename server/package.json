@@ -9,7 +9,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "express": "^4.13.0"
+    "express": "^4.13.0",
+    "tunnel": "0.0.3"
   },
   "dependencies": {
     "body-parser": "^1.13.1",
@@ -18,7 +19,7 @@
     "form-data": "^1.0.0-rc1",
     "gm": "^1.18.1",
     "multer": "^0.1.8",
-    "request": "^2.58.0",
+    "request": "git://github.com/ruiramos/request.git",
     "stdio": "^0.2.7"
   }
 }
