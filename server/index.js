@@ -1,6 +1,7 @@
 var app        = require('express')(),
     bodyParser = require('body-parser'),
-    multer     = require('multer');
+    multer     = require('multer'),
+    ImageGenerator = require('./controllers/imageGenerator');
 
 // CORS Handling
 app.use(function(req, res, next) {
@@ -15,7 +16,15 @@ app.use(function(req, res, next) {
 
 // Endpoints
 app.get('/quotes', require('./routes/quotes'));
-app.post('/upload', multer({ dest: './uploads/'}), require('./routes/upload'), require('./routes/quotes'));
+app.post('/upload',
+  multer({ dest: './uploads/'}),
+  require('./routes/upload'),
+  require('./routes/quotes'),
+  function(req, res){
+    console.log(req.query.quote);
+    ImageGenerator.generateImage(req.query.imageName, req.query.quote);
+    res.send({ok: 1});
+  });
 
 var server = app.listen(3000, function () {
   var address = server.address();
