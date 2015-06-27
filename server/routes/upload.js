@@ -41,7 +41,7 @@ var imageUpload = function(req, res, next){
     var tags = [
       body.results[0].result.tag.classes[0]
     ];
-
+    console.log(body.results[0].result.tag.classes);
     console.log('USE TAGS: ', tags.join(', '));
 
     // Assign tags to query
