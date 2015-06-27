@@ -9,4 +9,4 @@ module.exports = {
       .send({image: image})
       .end(callback);
   }
-}
+};
