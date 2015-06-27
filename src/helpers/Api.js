@@ -1,7 +1,7 @@
 
 var request = require('superagent');
 
-var host = 'http://localhost:3000/';
+var host = 'http://localhost:3000';
 
 module.exports = {
   postImage: function(image, callback){
