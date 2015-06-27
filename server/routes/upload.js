@@ -7,7 +7,7 @@ var request  = require('request'),
     imageCtrl= require('../controllers/imageGenerator');
 
 // List of black-listed meaningless tags
-var exclude = ['black and white', 'isolated'];
+var exclude = ['black and white', 'isolated', 'adult', 'portrait','adult'];
 
 var imageUpload = function(req, res, next){
   var image = req.files.img;
