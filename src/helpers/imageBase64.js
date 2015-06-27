@@ -1,6 +1,6 @@
 module.exports = function(file, fn){
   return $.canvasResize(file, {
-    width: 800,
+    width: 500,
     height: 0,
     crop: false,
     quality: 80,
