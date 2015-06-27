@@ -39,12 +39,7 @@ export class App extends BaseComponent {
   snapPhoto(){
     this.refs.snap.triggerButton();
   }
-                  // <svg x="0px" y="0px" viewBox="0 1.8 24 20.3" className="logo left">
-                  //   <g>
-                  //     <path fill="#FFFFFF" d="M12,10.3c-1.1,0-2,0.9-2,2c0,1.1,0.9,2,2,2s2-0.9,2-2C14,11.2,13.1,10.3,12,10.3z M12,13.5 c-0.7,0-1.2-0.5-1.2-1.2s0.5-1.2,1.2-1.2c0.7,0,1.2,0.5,1.2,1.2S12.7,13.5,12,13.5z"/>
-                  //     <path fill="#FFFFFF" d="M23.5,8.5l-6.4-6.3h-1.8c0,1-1.5,2.1-3.3,2.1S8.7,3.2,8.7,2.2H6.9L0.5,8.5c-0.4,0.4-0.4,1.1,0,1.5l3.1,3 c0.4,0.4,1.2,0.4,1.6,0L7,11.9v8.5C7,21,7,21.8,7.6,21.8H16h0.4c0.6,0,0.6-0.8,0.6-1.4v-8.5l1.6,1.1c0.4,0.4,1.3,0.4,1.8,0l3.1-3 C23.9,9.6,23.9,8.9,23.5,8.5z M16,14.6c0,0.4-0.3,1.3-0.8,1.3H8.8c-0.4,0-0.8-0.8-0.8-1.3V9.9c0-0.4,0.3-0.8,0.8-0.8H9h1l0.8-1h2.4 l0.8,1h1.2c0.4,0,0.8,0.4,0.8,0.8V14.6z"/> 
-                  //   </g>
-                  // </svg>
+
   render() {
     return (
       <body className="app">
@@ -66,6 +61,47 @@ export class App extends BaseComponent {
             <div className="col s12 m10 offset-m1 l10 offset-l1">
               <h5>Snap a pic to make a Shirtie!</h5>
               <button onClick={this.snapPhoto} className="btn-floating btn-large waves-effect waves-light"><i className="large material-icons">photo_camera</i></button>
+              <div className="preloader-wrapper hide active">
+                <div className="spinner-layer spinner-blue">
+                  <div className="circle-clipper left">
+                    <div className="circle"></div>
+                  </div><div className="gap-patch">
+                    <div className="circle"></div>
+                  </div><div className="circle-clipper right">
+                    <div className="circle"></div>
+                  </div>
+                </div>
+
+                <div className="spinner-layer spinner-red">
+                  <div className="circle-clipper left">
+                    <div className="circle"></div>
+                  </div><div className="gap-patch">
+                    <div className="circle"></div>
+                  </div><div className="circle-clipper right">
+                    <div className="circle"></div>
+                  </div>
+                </div>
+
+                <div className="spinner-layer spinner-yellow">
+                  <div className="circle-clipper left">
+                    <div className="circle"></div>
+                  </div><div className="gap-patch">
+                    <div className="circle"></div>
+                  </div><div className="circle-clipper right">
+                    <div className="circle"></div>
+                  </div>
+                </div>
+
+                <div className="spinner-layer spinner-green">
+                  <div className="circle-clipper left">
+                    <div className="circle"></div>
+                  </div><div className="gap-patch">
+                    <div className="circle"></div>
+                  </div><div className="circle-clipper right">
+                    <div className="circle"></div>
+                  </div>
+                </div>
+              </div>
               <div className="card-panel center-align hide">
                 <Snap ref="snap" handlePhotoChanged={this.handlePhotoChanged} />
                 <img ref="imageContainer" />
@@ -75,7 +111,7 @@ export class App extends BaseComponent {
         </main>
 
         <footer className="page-footer">
-          <div className="container">
+          <div className="container hide-on-small-only">
             <div className="row">
               <div className="col l12 s12">
                 <h5 className="white-text">Footer Content</h5>
