@@ -16,6 +16,7 @@
     "connect-multiparty": "^1.2.5",
     "express": "^4.13.0",
     "form-data": "^1.0.0-rc1",
+    "gm": "^1.18.1",
     "multer": "^0.1.8",
     "request": "^2.58.0",
     "stdio": "^0.2.7"
