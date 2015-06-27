@@ -14,6 +14,4 @@ if(document.location.host.indexOf('localhost') === 0){
 
 // ----
 
-console.log(App)
-
 React.render(<App />, document.body);

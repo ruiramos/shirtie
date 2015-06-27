@@ -18,14 +18,15 @@
   "homepage": "https://github.com/ruiramos/shirtie",
   "dependencies": {
     "babel": "^5.6.14",
-    "node-libs-browser": "^0.5.2",
-    "react": "^0.13.3",
-    "webpack": "^1.9.12",
     "babel-core": "^5.6.14",
     "babel-loader": "^5.2.2",
     "less": "^2.5.1",
-    "less-loader": "^2.2.0"
+    "less-loader": "^2.2.0",
+    "node-libs-browser": "^0.5.2",
+    "pica": "^1.0.7",
+    "react": "^0.13.3",
+    "superagent": "^1.2.0",
+    "webpack": "^1.9.12"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
