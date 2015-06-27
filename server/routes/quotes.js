@@ -6,6 +6,14 @@ var defaultTags = [/*'funny'*/];
 
 // Get awesome quotes (endpoint handler)
 var getQuotes = function(req, res, next){
+  console.log(req.body);
+  
+  console.log('####################');
+  console.log('####################');
+  console.log('####################');
+
+  console.log(req.files);
+
   var options = {
     uri: 'https://api.import.io/store/data/51f15248-0763-4114-8c2f-36dc99fc8f8c/_query',
     method: 'POST',

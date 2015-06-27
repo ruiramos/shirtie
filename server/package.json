@@ -13,7 +13,9 @@
   },
   "dependencies": {
     "body-parser": "^1.13.1",
+    "connect-multiparty": "^1.2.5",
     "express": "^4.13.0",
+    "multer": "^0.1.8",
     "request": "^2.58.0",
     "stdio": "^0.2.7"
   }
