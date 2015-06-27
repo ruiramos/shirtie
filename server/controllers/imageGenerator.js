@@ -32,7 +32,7 @@ function _getResizedFileName(img){
 }
 
 function _getRandomFont(){
-  return fonts[Math.floor(fonts.length * Math.random())];
+  return 'Helvetica'; //fonts[Math.floor(fonts.length * Math.random())];
 }
 
 var ImageGenerator = {
