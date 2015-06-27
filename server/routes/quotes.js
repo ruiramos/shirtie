@@ -25,12 +25,19 @@ var getQuotes = function(req, res, next){
 
   request(options, function (error, response, body) {
     if (!error && response.statusCode == 200) {
-      res.send(body.results.map(function(result){
-        return {
-          quote: result['bqquotelink_link/_text'],
-          by:    result['kennybaker_link/_text']
-        };
-      }));
+      res.send(
+        body.results
+          // map quote data
+          .map(function(result){return {
+            quote: result['bqquotelink_link/_text'],
+            by:    result['kennybaker_link/_text']
+          };})
+
+          // Filter quotes by length
+          .filter(function(quote){
+            return quote.quote.length;
+          })
+      );
     }
   });
 };
