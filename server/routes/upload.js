@@ -20,40 +20,36 @@ var imageUpload = function(req, res, next){
     }
   };
 
-  // Create new form
-  var form = new FormData();
+  // Resize image
+  var stream = fs.createWriteStream(path.resolve(__dirname, "../../uploads/" + image.name.split('.')[0] + '_r.' + image.extension));
+  
+  // Pipe the resized image
+  imageCtrl.getResizedStream(image.name, stream);
 
-  // Append image to form
-  var bufs = [];
-  // form.append("encoded_data", fs.createReadStream(path.resolve(__dirname, "../../" + image.name)));
+  stream.on('finish', function(){
+    // Create new form
+    var form = new FormData();
 
-  imageCtrl.getResizedStream(image.name, function(err, stdout, stderr){
-    console.log('!!!!!!!!!!!!!!!!!')
-    console.log(arguments);
-    stdout.on('data', function(d){bufs.push(d); });
+    // Append image to form
+    form.append("encoded_data", fs.createReadStream(path.resolve(__dirname, "../../uploads/" + image.name.split('.')[0]+ '_r.' + image.extension)));
 
-    stdout.on('end', function(){
-      var buf = new Buffer(bufs);
-    
-      form.append("encoded_data", buf);
-    
-      form.getLength(function(err, length){
-        // Handle errors
-        if (err) {
-          return requestCallback(err);
-        }
+    // Submit form
+    form.getLength(function(err, length){
+      // Handle errors
+      if (err) {
+        return requestCallback(err);
+      }
 
-        // Create response
-        var r = request(options, requestCallback);
-        r._form = form;
+      // Create response
+      var r = request(options, requestCallback);
+      r._form = form;
 
-        // Set extra form headers
-        r.setHeader('content-length', length);
-        var headers = form.getHeaders();
-        for(var header in headers){
-          r.setHeader(header, headers[header]);
-        }
-      });
+      // Set extra form headers
+      r.setHeader('content-length', length);
+      var headers = form.getHeaders();
+      for(var header in headers){
+        r.setHeader(header, headers[header]);
+      }
     });
   });
 
