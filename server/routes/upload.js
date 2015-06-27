@@ -22,36 +22,43 @@ var imageUpload = function(req, res, next){
 
   // Resize image
   var stream = fs.createWriteStream(path.resolve(__dirname, "../../uploads/" + image.name.split('.')[0] + '_r.' + image.extension));
-  
+
   // Pipe the resized image
   imageCtrl.getResizedStream(image.name, stream);
 
-  stream.on('finish', function(){
-    // Create new form
-    var form = new FormData();
+  stream.on('finish', function(err){
+    options.formData = {
+      "encoded_data": fs.createReadStream(path.resolve(__dirname, "../../uploads/" + image.name.split('.')[0]+ '_r.' + image.extension))
+    };
 
-    // Append image to form
-    form.append("encoded_data", fs.createReadStream(path.resolve(__dirname, "../../uploads/" + image.name.split('.')[0]+ '_r.' + image.extension)));
-
-    // Submit form
-    form.getLength(function(err, length){
-      // Handle errors
-      if (err) {
-        return requestCallback(err);
-      }
-
-      // Create response
-      var r = request(options, requestCallback);
-      r._form = form;
-
-      // Set extra form headers
-      r.setHeader('content-length', length);
-      var headers = form.getHeaders();
-      for(var header in headers){
-        r.setHeader(header, headers[header]);
-      }
-    });
+    var r = request(options, requestCallback);
   });
+
+
+    // // Create new form
+    // var form = new FormData();
+
+    // // Append image to form
+    // form.append("encoded_data", fs.createReadStream(path.resolve(__dirname, "../../uploads/" + image.name.split('.')[0]+ '_r.' + image.extension)));
+
+    // // Submit form
+    // form.getLength(function(err, length){
+    //   // Handle errors
+    //   if (err) {
+    //     return requestCallback(err);
+    //   }
+
+    //   // Create response
+    //   var r = request(options, requestCallback);
+    //   r._form = form;
+
+    //   // Set extra form headers
+    //   r.setHeader('content-length', length);
+    //   var headers = form.getHeaders();
+    //   for(var header in headers){
+    //     r.setHeader(header, headers[header]);
+    //   }
+    //});
 
   function requestCallback(err, response, body) {
     // We have the tags
