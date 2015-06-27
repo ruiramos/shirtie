@@ -6,4 +6,4 @@ module.exports = {
     Api.postMultipartImage(image, fn);
   }
 
-}
+};
