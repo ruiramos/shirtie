@@ -21,17 +21,16 @@ var imageUpload = function(req, res, next){
   };
 
   // Resize image
-  var stream = fs.createWriteStream(path.resolve(__dirname, "../../uploads/" + image.name.split('.')[0] + '_r.' + image.extension));
+  // var stream = fs.createWriteStream(path.resolve(__dirname, "../../uploads/" + image.name.split('.')[0] + '_r.' + image.extension));
 
   // Pipe the resized image
-  imageCtrl.getResizedStream(image.name, stream);
-
-  stream.on('finish', function(err){
+  imageCtrl.getResizedImage(image.name, function(){
     options.formData = {
-      "encoded_data": fs.createReadStream(path.resolve(__dirname, "../../uploads/" + image.name.split('.')[0]+ '_r.' + image.extension))
+      "encoded_data": fs.createReadStream(path.resolve(__dirname, "../../uploads/" + image.name.split('.')[0]+ '_resize.' + image.extension))
     };
 
     var r = request(options, handleTags);
+
   });
 
   function handleTags(err, response, body) {
@@ -41,8 +40,6 @@ var imageUpload = function(req, res, next){
     var tags = [
       body.results[0].result.tag.classes[0]
     ];
-    console.log(body.results[0].result.tag.classes);
-    console.log('USE TAGS: ', tags.join(', '));
 
     // Assign tags to query
     req.query = {

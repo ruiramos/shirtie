@@ -40,7 +40,7 @@ var getQuotes = function(req, res, next){
 
   request(options, function (error, response, body) {
     if (!error && response.statusCode == 200) {
-      var quotes =body.results
+      var quotes = body.results
           // map quote data
           .map(function(result){
             return {
