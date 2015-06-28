@@ -21,6 +21,7 @@ module.exports = {
         contentType: false,
         processData: false,
         type: 'POST',
+        timeout: 9999,
         success: function(data){
           callback(null, data);
         }

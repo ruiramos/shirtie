@@ -62,16 +62,16 @@ export class Preview extends React.Component {
               </div>
               <div className="row">
                 <div className="input-field col s12">
-                  <select name="type" id="type">
+                  <select name="type" id="type" defaultValue="tshirt">
                     <option value="" disabled selected>Type</option>
-                    <option value="s">T-Shirt (£9.99)</option>
-                    <option value="m">Hoodie (£12.99)</option>
+                    <option value="tshirt">T-Shirt (£9.99)</option>
+                    <option value="hoodie">Hoodie (£12.99)</option>
                   </select>
                   <label>Type:</label>
                 </div>
 
                 <div className="input-field col s12">
-                  <select name="size" id="size">
+                  <select name="size" id="size" defaultValue="l">
                     <option value="" disabled selected>Size</option>
                     <option value="s">S</option>
                     <option value="m">M</option>
