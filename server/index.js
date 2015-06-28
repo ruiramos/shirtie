@@ -15,6 +15,7 @@ app.use(function(req, res, next) {
 
 app.use(bodyParser.json());
 
+app.use('/images', express.static(__dirname + '/images'));
 app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use('/dist', express.static(path.resolve(__dirname, '../dist')));
 
