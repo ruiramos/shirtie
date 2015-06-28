@@ -4,7 +4,7 @@ var fs = require('fs'),
     path = require('path'),
     exec = require('child_process').exec;
 
-var dir = path.resolve(__dirname, '../../uploads') + '/' ;
+var dir = path.resolve(__dirname, '../uploads') + '/' ;
     WIDTH = 800,
     fonts = [
       'Seravek-Light-Italic',
@@ -76,7 +76,7 @@ var ImageGenerator = {
                     callback(null, {
                       imageName: imgFileName +'_final.' + ext,
                       fullPath: dir + imgFileName +'_final.' + ext,
-                      publicUri: 'todo'
+                      publicUri: '/uploads/' + imgFileName +'_final.' + ext
                     });
 
                   });

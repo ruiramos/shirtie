@@ -3,13 +3,13 @@ var request  = require('request'),
     fs = require('fs'),
      tunnel = require('tunnel');
 
-var tunnelingAgent = tunnel.httpsOverHttp({
-  ca: [ fs.readFileSync('/Users/rui/Desktop/charles-ssl-proxying-certificate.crt')],
-  proxy: {
-    host: 'localhost',
-    port: 8888 // default Charles proxy port
-  }
-});
+// var tunnelingAgent = tunnel.httpsOverHttp({
+//   ca: [ fs.readFileSync('/Users/rui/Desktop/charles-ssl-proxying-certificate.crt')],
+//   proxy: {
+//     host: 'localhost',
+//     port: 8888 // default Charles proxy port
+//   }
+// });
 
 var assetUploadUrl = 'https://api.kite.ly/v1.4/asset/sign';
 
@@ -35,7 +35,7 @@ console.log('oi', req.query.art);
 
     request.put({
       uri: signedAmazonUrl,
-      agent: tunnelingAgent,
+      // agent: tunnelingAgent,
       headers: {
         'content-type': 'image/jpeg',
         'x-amz-acl': 'private'

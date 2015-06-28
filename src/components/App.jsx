@@ -122,7 +122,7 @@ export class App extends BaseComponent {
           <div className="footer-copyright">
             <div className="container">
             © 2014 Copyright Text
-            <a className="grey-text text-lighten-4 right" href="#!">More Links</a>
+            <a className="grey-text text-lighten-4 right" href="#!">#HackTheVisual</a>
             </div>
           </div>
         </footer>

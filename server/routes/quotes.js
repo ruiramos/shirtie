@@ -53,7 +53,7 @@ var getQuotes = function(req, res, next){
           .filter(function(quote){
             return quote.quote && quote.quote.length <= CHARACTER_LIMIT;
           });
-
+        console.log(quotes);
         req.query.quote = _selectQuote(quotes);
         next();
     }

@@ -25,7 +25,7 @@ var imageUpload = function(req, res, next){
   // Pipe the resized image
   imageCtrl.getResizedImage(image.name, function(){
     options.formData = {
-      "encoded_data": fs.createReadStream(path.resolve(__dirname, "../../uploads/" + image.name.split('.')[0]+ '_resize.' + image.extension))
+      "encoded_data": fs.createReadStream(path.resolve(__dirname, "../uploads/" + image.name.split('.')[0]+ '_resize.' + image.extension))
     };
 
     var r = request(options, handleTags);
@@ -33,6 +33,9 @@ var imageUpload = function(req, res, next){
   });
 
   function handleTags(err, response, body) {
+    console.log(err, body);
+    if (!body || err) return res.send('Error');
+
     var results = JSON.parse(body).results;
     // console.log('TAGS', results[0].result.tag);
     // Select a tag (has to be improved)

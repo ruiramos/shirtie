@@ -28,6 +28,7 @@
     "request": "^2.58.0",
     "style-loader": "^0.12.3",
     "superagent": "^1.2.0",
+    "tunnel": "0.0.3",
     "webpack": "^1.9.12"
   },
   "devDependencies": {}
