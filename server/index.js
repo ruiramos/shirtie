@@ -27,6 +27,7 @@ app.post('/upload',
     dest: './server/uploads/',
     limits: {fieldSize: 100},
   }),
+  require('./routes/token'),
   require('./routes/upload'),
   require('./routes/quotes'),
   function(req, res, next){
