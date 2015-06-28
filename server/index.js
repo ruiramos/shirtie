@@ -24,7 +24,7 @@ app.get('/quotes', require('./routes/quotes'));
 
 app.post('/upload',
   multer({
-    dest: './server/uploads/',
+    dest: './uploads/',
     limits: {fieldSize: 100},
   }),
   require('./routes/token'),
