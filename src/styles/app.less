@@ -56,7 +56,7 @@ nav.top-nav {
 .preview-shirt {
   background-position: center;
   display: inline-block;
-  height: 100%;
+  // height: 100%;
   width: 100%;
   background-size: 50%, contain;
   background-repeat: no-repeat;
@@ -64,6 +64,11 @@ nav.top-nav {
   -webkit-background-blend-mode: multiply;
 
   transition: background-size 0.4s;
+
+  img {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
 input[type="checkbox"]:checked ~ .preview-shirt {
@@ -74,5 +79,5 @@ input[type="checkbox"]:checked ~ .preview-shirt {
   height: 66px;
   margin-top: 24px;
   padding-right: 0.25em;
-  margin-left: -33px;
+  margin-left: -46px;
 }
