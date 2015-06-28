@@ -30,7 +30,13 @@ export class App extends BaseComponent {
     this.setState({loading: true});
 
     ImageActions.postImage(file, (err, res) => {
-      console.log('got', res);
+      if (err) {
+        return this.setState({
+          loading: false,
+          error:err
+        });
+      }
+
       this.setState({
         loading: false,
         image: res.imageName,

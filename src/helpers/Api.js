@@ -1,7 +1,7 @@
 
 var request = require('superagent');
 
-var host = 'http://192.168.88.209:3000';
+var host = 'http://localhost:3000';
 
 module.exports = {
   postImage: function(image, callback){
@@ -24,6 +24,9 @@ module.exports = {
         timeout: 9999,
         success: function(data){
           callback(null, data);
+        }, 
+        error: function(error){
+          callback(error);
         }
     });
   }

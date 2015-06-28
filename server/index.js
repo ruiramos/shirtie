@@ -29,8 +29,7 @@ app.post('/upload',
   require('./routes/upload'),
   require('./routes/quotes'),
   function(req, res, next){
-    if (!query.quote) {
-      res.status(500);
+    if (!req.query || !req.query.quote) {
       return res.send({error:'No inspiration was found...'});
     }
 
@@ -45,11 +44,11 @@ app.post('/upload',
       error: null,
       imageName: req.query.art.imageName,
       imagePath: req.query.art.publicUri
-    })
+    });
     }
   );
 
-app.post('/place', require('./routes/createAsset'), require('./routes/confirmOrder'))
+app.post('/place', require('./routes/createAsset'), require('./routes/confirmOrder'));
 
 app.get('*', function(req, res){ res.sendFile(path.resolve(__dirname, '../index.html')); });
 
