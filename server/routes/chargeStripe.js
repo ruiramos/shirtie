@@ -1,6 +1,6 @@
 
 var config = require('../config'),
-    stripe = require('stripe')(config.stripe_test_key);
+    stripe = require('stripe')(config.stripe_live_key);
 
 var ChargeStripe = function(req, res, next){
   var t = req.body.token;

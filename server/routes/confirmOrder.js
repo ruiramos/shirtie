@@ -43,7 +43,7 @@ var orderObject = {
 var requestOptions = {
   uri: 'https://api.kite.ly/v1.4/print/',
   headers: {
-    'Authorization': 'ApiKey ' + config.kite_test_key + ':' + config.kite_test_secret
+    'Authorization': 'ApiKey ' + config.kite_live_key + ':' + config.kite_live_secret
   },
   json: true,
   body: orderObject
