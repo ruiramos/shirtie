@@ -54,7 +54,7 @@ app.get('*', function(req, res){ res.sendFile(path.resolve(__dirname, '../index.
 
 
 
-var server = app.listen(3000, function () {
+var server = app.listen(3210, function () {
   var address = server.address();
   console.log('Example app listening at http://%s:%s', address.host, address.port);
 });
