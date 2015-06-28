@@ -14,7 +14,7 @@ export class App extends BaseComponent {
   constructor(){
     super();
     this.state = {};
-    this.bindMethods('snapPhoto', 'handlePhotoChanged', 'handleOrderComplete');
+    this.bindMethods('snapPhoto', 'handlePhotoChanged', 'handleOrderComplete', 'setLoading');
   }
 
   handlePhotoChanged(evt){
@@ -54,6 +54,10 @@ export class App extends BaseComponent {
   handleOrderComplete(res){
     console.log('order complete', res);
     this.setState({orderId: res.order_id});
+  }
+
+  setLoading(loading){
+    this.setState({loading: loading});
   }
 
   render() {
@@ -140,6 +144,7 @@ export class App extends BaseComponent {
               classes={previewClass}
               handleOrderComplete={this.handleOrderComplete}
               orderId={this.state.orderId}
+              setLoading={this.setLoading}
             />
 
             </div>

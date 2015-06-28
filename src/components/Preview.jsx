@@ -20,11 +20,15 @@ export class Preview extends BaseComponent {
 
     this.handler = StripeCheckout.configure({
       key: 'pk_test_hPQEW3iYvtdD31MedlLl2m29',
-      image: '/img/documentation/checkout/marketplace.png',
+      image: window.host+'/images/shirtie.png',
       token: function(token) {
+        that.props.setLoading(true);
         console.log('got token', token);
         OrderActions.createOrder(that.state.form1, token, that.props.previewImageName,
-          (err, res)=>{that.props.handleOrderComplete(res.body)})
+          (err, res)=>{
+            that.props.setLoading(false);
+            that.props.handleOrderComplete(res.body);
+          })
       }
     });
   }
@@ -74,6 +78,7 @@ export class Preview extends BaseComponent {
 
     var firstFormClass = 'firstForm ' + (!this.state.form1 ? 'visible':'hidden');
     var secondFormClass = 'secondForm ' + (this.state.form1 ? 'visible':'hidden');
+    var wearItClass = (!this.state.form1 ? 'visible' : 'hidden');
 
     var confirmationThing = 'confirmation ' + (this.props.orderId ? 'visible':'hidden');
     var formsThing = 'confirmation ' + (!this.props.orderId ? 'visible':'hidden');
@@ -170,7 +175,7 @@ export class Preview extends BaseComponent {
 
           </div>
 
-          <div className={firstFormClass + " card-action"}>
+          <div className={wearItClass + " card-action"}>
             <a onClick={this.sendFirstForm} style={styles.link}>Wear it!</a>
           </div>
 

@@ -7,14 +7,14 @@ export class Confirmation extends React.Component {
 
   render() {
     var styles = {
-      finalP: {
+      finalp: {
         marginTop: '25px'
       }
     };
 
     if(this.props.formData){
       var formDetails = this.props.formData.map((field) => {
-        if(field.name === 'size') field.value = field.value.toUppercase();
+        if(field.name === 'size' && field.value) field.value = field.value.toUpperCase();
         return (
           <div className="field">
             <label>{field.name}</label>
