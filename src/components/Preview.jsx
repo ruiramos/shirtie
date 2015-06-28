@@ -72,8 +72,6 @@ export class Preview extends BaseComponent {
       }
     };
 
-    console.log(styles.preview.backgroundImage);
-
     var firstFormClass = 'firstForm ' + (!this.state.form1 ? 'visible':'hidden');
     var secondFormClass = 'secondForm ' + (this.state.form1 ? 'visible':'hidden');
 
