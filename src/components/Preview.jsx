@@ -3,6 +3,13 @@ import React from 'react';
 require('../styles/preview.less');
 
 export class Preview extends React.Component {
+  componentDidMount() {
+    $(document).ready(function() {
+      console.log('asjdlaskdjaklsdj');
+      $('select').material_select();
+    });
+  }
+
   render() {
     var styles = {
       link: {
@@ -15,51 +22,76 @@ export class Preview extends React.Component {
         <div className="card center-align">
 
           <div className="card-content left-align">
-            <span className="card-title grey-text text-darken-4">Almost there...</span>
+            <span className="card-title activator grey-text text-darken-4">Almost there... <i className="material-icons right red-text">photo</i></span>
             <p>Just give us your details so we know where to send it!</p>
 
-            <form>
-              <label>Your name:</label>
-              <input type="text" name="name" />
+            <form className="col s12">
+              <div className="row">
+                <div className="input-field col s12"></div>
+                <div className="input-field col s12"></div>
 
-              <label>Your email:</label>
-              <input type="text" name="email" />
+                <div className="input-field col s12">
+                  <input type="text" name="name" id="name" />
+                  <label for="name">Your name:</label>
+                </div>
 
-              <label>Address 1:</label>
-              <input type="text" name="address1" />
+                <div className="input-field col s12">
+                  <input type="text" name="email" id="email" />
+                  <label for="email">Your email:</label>
+                </div>
 
-              <label>Address 2:</label>
-              <input type="text" name="address2" />
+              </div>
+              <div className="row">
 
-              <label>Post Code:</label>
-              <input type="text" name="postcode" />
+                <div className="input-field col s12">
+                  <input type="text" name="address1" id="address1" />
+                  <label for="address1">Address 1:</label>
+                </div>
 
-              <label>Type:</label>
-              <select name="type">
-                <option value="s">T-Shirt (£9.99)</option>
-                <option value="m">Hoodie (£12.99)</option>
-              </select>
+                <div className="input-field col s12">
+                  <input type="text" name="address2" id="address2" />
+                  <label for="address2">Address 2:</label>
+                </div>
 
-              <label>Size:</label>
-              <select name="size">
-                <option value="s">S</option>
-                <option value="m">M</option>
-                <option value="l">L</option>
-                <option value="xl">XL</option>
-              </select>
+                <div className="input-field col s12">
+                  <input type="text" name="postcode" id="postcode" />
+                  <label for="postcode">Post Code:</label>
+                </div>
 
-              <button onClick={this.sendForm} type="button">I'm ready!</button>
+              </div>
+              <div className="row">
+                <div className="input-field col s12">
+                  <select name="type" id="type">
+                    <option value="" disabled selected>Type</option>
+                    <option value="s">T-Shirt (£9.99)</option>
+                    <option value="m">Hoodie (£12.99)</option>
+                  </select>
+                  <label>Type:</label>
+                </div>
+
+                <div className="input-field col s12">
+                  <select name="size" id="size">
+                    <option value="" disabled selected>Size</option>
+                    <option value="s">S</option>
+                    <option value="m">M</option>
+                    <option value="l">L</option>
+                    <option value="xl">XL</option>
+                  </select>
+                  <label>Size:</label>
+                </div>
+              </div>
             </form>
           </div>
 
-          <div className="card-action activator">
-            <a className="activator" style={styles.link}>Wear it!</a>
+          <div className="card-action">
+            <a onCLick={this.sendForm} style={styles.link}>Wear it!</a>
           </div>
 
           <div className="card-reveal">
-            <span className="card-title grey-text text-darken-4">Here it is...</span>
+            <span className="card-title grey-text text-darken-4">Your finest moment. <i className="material-icons right">close</i></span>
+            <br/>
             <div className="card-image">
-              <img src={'http://192.168.88.209:3000' + this.props.previewImage}></img>
+              <img src={'http://192.168.88.209:3000' + this.props.previewImage} className="z-depth-1"></img>
             </div>
           </div>
           <div className="hide">
@@ -69,4 +101,3 @@ export class Preview extends React.Component {
     );
   }
 }
-
