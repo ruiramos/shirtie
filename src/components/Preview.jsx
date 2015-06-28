@@ -92,7 +92,8 @@ export class Preview extends React.Component {
             <span className="card-title grey-text text-darken-4">Your finest moment. <i className="material-icons right">close</i></span>
             <br/>
             <div className="card-image">
-              <img src={'http://localhost:3000' + this.props.previewImage}></img>
+              <img src="/shirt.png" className="preview-shirt" />
+              <img src={'http://localhost:3000' + this.props.previewImage} />
             </div>
           </div>
           <div className="hide">
