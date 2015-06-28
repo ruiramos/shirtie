@@ -119,8 +119,12 @@ export class App extends BaseComponent {
                   <p>I am a very simple card. I am good at containing small bits of information.
                   I am convenient because I require little markup to use effectively.</p>
                 </div>
-                <div className="card-action">
+                <div className="card-action activator">
                   <a href="#">Wear it!</a>
+                </div>
+                <div className="card-reveal">
+                  <span className="card-title grey-text text-darken-4">Card Titleclose</i></span>
+                  <p>Here is some more information about this product that is only revealed once clicked on.</p>
                 </div>
                 <div className="hide">
                 </div>
