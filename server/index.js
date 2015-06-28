@@ -32,22 +32,11 @@ app.post('/upload',
     });
 
   },
-  require('./routes/kitely'),
-  function(req, res){ res.send({error: null, art: req.query.art.publicUri}) }
+  require('./routes/createAsset'),
+  function(req, res){ res.send({error: null, art: req.query.art }) }
   );
 
-app.get('/kitely',
-  function(req, res, next){
-    req.query = {
-      art: {
-        fullPath: '/Volumes/Work/server/projects/shirtie/uploads/test_final.jpg'
-      }
-    };
-    next();
-  },
-  require('./routes/kitely'),
-  function(req, res){ res.send({error: null, art: req.query.art.publicUri}) }
-  )
+app.get('/place', require('./routes/confirmOrder'))
 
 var server = app.listen(3000, function () {
   var address = server.address();
