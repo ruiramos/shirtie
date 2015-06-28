@@ -23,7 +23,10 @@ app.post('/upload',
   require('./routes/upload'),
   require('./routes/quotes'),
   function(req, res, next){
-    console.log('using quote:', req.query.quote);
+    if (!query.quote) {
+      res.status(500);
+      return res.send({error:'No inspiration was found...'});
+    }
 
     ImageGenerator.generateImage(req.query.imageName, req.query.quote, function(err, finalImage){
       req.query.art = finalImage;

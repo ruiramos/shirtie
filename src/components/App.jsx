@@ -34,8 +34,9 @@ export class App extends BaseComponent {
       this.setState({
         loading: false,
         image: res.imageName,
-        imagePath: res.imagePath
-      })
+        imagePath: res.imagePath,
+        error: res.error
+      });
     });
   }
 
@@ -48,6 +49,8 @@ export class App extends BaseComponent {
     var previewClass = 'preview ' + (this.state.imagePath ? 'visible' : 'hidden');
     var spinnerClass = this.state.loading ? '' : 'hide';
     var buttonClass  = this.state.loading ? 'faded' : '';
+    var errorClass   = this.state.error ? '' : 'hide';
+    var titleErrorClass = this.state.error ? 'hide' : '';
 
     return (
       <body className="app">
@@ -68,7 +71,8 @@ export class App extends BaseComponent {
           <div className="row valign center-align main-row">
             <div className="col s12 m10 offset-m1 l10 offset-l1">
               <div className={snapClass}>
-                <h5>Snap a pic to make a Shirtie!</h5>
+                <h5 className={titleErrorClass}>Snap a pic to make a Shirtie!</h5>
+                <h5 className={errorClass}>No inspiration was found... Try again!</h5>
                 <Snap ref="snap" className="hide" handlePhotoChanged={this.handlePhotoChanged} />
                 <button onClick={this.snapPhoto} className={buttonClass+" fade btn-floating btn-large waves-effect waves-light"}><i className="large material-icons">photo_camera</i></button>
               </div>

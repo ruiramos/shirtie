@@ -18,6 +18,8 @@ export class Preview extends React.Component {
 
     return (
       <div className={this.props.classes}>
+        <br/>
+        <br/>
         <div className="card center-align">
 
           <div className="card-content left-align">
