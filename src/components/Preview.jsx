@@ -46,7 +46,7 @@ export class Preview extends React.Component {
                 <option value="xl">XL</option>
               </select>
 
-              <button onCLick={this.sendForm} type="button">I'm ready!</button>
+              <button onClick={this.sendForm} type="button">I'm ready!</button>
             </form>
           </div>
 
@@ -68,14 +68,3 @@ export class Preview extends React.Component {
   }
 }
 
-/**
-          // <div className="card-content left-align">
-          //   <blockquote>
-          //     Multiparts...
-          //     <br/>
-          //     <i><small>- Rui Ramos</small></i>
-          //   </blockquote>
-          //   <p>I am a very simple card. I am good at containing small bits of information.
-          //   I am convenient because I require little markup to use effectively.</p>
-          // </div>
-**/
