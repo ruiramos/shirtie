@@ -2,6 +2,6 @@ var React = require('react'),
     App = require('./components/App.jsx').App;
 
 window.React = React;
-window.host = 'http://localhost:3000';
+window.host = 'http://localhost:3210';
 
 React.render(<App />, document.body);
