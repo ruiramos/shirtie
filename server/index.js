@@ -30,7 +30,7 @@ app.post('/upload',
 
   },
   // require('./routes/kitely'),
-  // require('./routes/shirt'),
+  require('./routes/shirt'),
   function(req, res){ res.send({error: null, art: req.query.art.publicUri}); }
   );
 
