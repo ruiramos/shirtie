@@ -62,9 +62,13 @@ export class Preview extends BaseComponent {
   }
 
   render() {
+    console.log(this.props.previewImage, this.props);
     var styles = {
       link: {
         cursor: 'pointer'
+      },
+      preview: {
+        backgroundImage: 'url(' + (window.host + this.props.previewImage) + '), url(/src/images/shirt.png)'
       }
     };
 
@@ -175,9 +179,7 @@ export class Preview extends BaseComponent {
             <br/>
             <div className="card-image">
 
-              <img src="/shirt.png" className="preview-shirt" />
-              <img src={window.host + this.props.previewImage}></img>
-
+              <div className="preview-shirt" style={styles.preview} />
             </div>
           </div>
           <div className="hide">
