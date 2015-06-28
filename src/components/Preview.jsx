@@ -58,7 +58,6 @@ export class Preview extends React.Component {
 
               </div>
               <div className="row">
-
                 <div className="input-field col s12">
                   <select name="type" id="type">
                     <option value="" disabled selected>Type</option>
@@ -100,16 +99,3 @@ export class Preview extends React.Component {
     );
   }
 }
-
-
-/**
-          // <div className="card-content left-align">
-          //   <blockquote>
-          //     Multiparts...
-          //     <br/>
-          //     <i><small>- Rui Ramos</small></i>
-          //   </blockquote>
-          //   <p>I am a very simple card. I am good at containing small bits of information.
-          //   I am convenient because I require little markup to use effectively.</p>
-          // </div>
-**/

@@ -10,6 +10,7 @@ require('../styles/app.less');
 export class App extends BaseComponent {
   constructor(){
     super();
+    this.state = {};
     this.bindMethods('snapPhoto', 'handlePhotoChanged');
   }
 
@@ -24,7 +25,10 @@ export class App extends BaseComponent {
         file = files[0];
     }
 
-    ImageActions.postImage(file, (err, res) => console.log(res));
+    ImageActions.postImage(file, (err, res) => this.setState({
+      image: res.imageName,
+
+    }));
 
     // imageToBase64(file, function(data){
     //   that.refs.imageContainer.getDOMNode().src = data;
