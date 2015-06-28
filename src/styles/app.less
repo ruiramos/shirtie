@@ -62,4 +62,10 @@ nav.top-nav {
   background-repeat: no-repeat;
   background-blend-mode: multiply;
   -webkit-background-blend-mode: multiply;
+
+  transition: background-size 0.4s;
+}
+
+input[type="checkbox"]:checked ~ .preview-shirt {
+  background-size: contain, 0%;
 }
