@@ -29,7 +29,7 @@ app.post('/upload',
   require('./routes/upload'),
   require('./routes/quotes'),
   function(req, res, next){
-    if (!query.quote) {
+    if (!req.query.quote) {
       res.status(500);
       return res.send({error:'No inspiration was found...'});
     }
@@ -49,7 +49,7 @@ app.post('/upload',
     }
   );
 
-app.post('/place', require('./routes/createAsset'), require('./routes/confirmOrder'))
+app.post('/purchase', require('./routes/chargeStripe'), require('./routes/createAsset'), require('./routes/confirmOrder'))
 
 app.get('*', function(req, res){ res.sendFile(path.resolve(__dirname, '../index.html')); });
 

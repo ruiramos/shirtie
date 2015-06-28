@@ -3,6 +3,7 @@ var request  = require('request'),
     fs = require('fs'),
     https = require('https'),
     url = require('url'),
+    path = require('path'),
     tunnel = require('tunnel');
 
 // var tunnelingAgent = tunnel.httpsOverHttp({
@@ -16,7 +17,7 @@ var request  = require('request'),
 var assetUploadUrl = 'https://api.kite.ly/v1.4/asset/sign';
 
 var uploadArt = function(req, res, next){
-  var imagePath = path.resolve(__dirname, '../uploads') + '/' + req.body.imagePath;
+  var imagePath = path.resolve(__dirname, '../uploads') + '/' + req.body.imageName;
 
   console.log('uploading', imagePath)
 
@@ -34,6 +35,8 @@ var uploadArt = function(req, res, next){
   }, function(err, res){
     var signedAmazonUrl = res.body.signed_requests[0];
     var s3Url = res.body.urls[0];
+
+    req.query.assetUrl = s3Url;
 
     console.log('sending request to ', signedAmazonUrl)
 
