@@ -55,6 +55,7 @@ var ImageGenerator = {
 
     ImageGenerator.generateLabel(quote, author, imgName, function(){
       gm(dir + imgName)
+        .noProfile()
         .resize(WIDTH*.75, 600)
         .stream(function(err, stdout){
           gm(stdout).size({bufferStream: true}, function(err, size){

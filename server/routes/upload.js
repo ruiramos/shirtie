@@ -9,6 +9,8 @@ var request  = require('request'),
 var exclude = ['black and white', 'isolated', 'adult', 'portrait','adult'];
 
 var imageUpload = function(req, res, next){
+  console.log('entering quotes');
+
   var image = req.files.img;
 
   var options = {
