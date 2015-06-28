@@ -10,9 +10,9 @@ var ChargeStripe = function(req, res, next){
   form.forEach(function(field){
     if(field.name === 'type'){
       if(field.value === 'tshirt'){
-        ammount = 990;
+        ammount = 1790;
       } else {
-        ammount = 1990;
+        ammount = 2490;
       }
     } else if(field.name === 'email'){
       email = field.value;
