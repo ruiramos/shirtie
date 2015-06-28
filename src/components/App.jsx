@@ -93,7 +93,7 @@ export class App extends BaseComponent {
               <div className={snapClass}>
                 <div>
                   <h5 className={titleErrorClass}>Snap a pic to create your Shirtie!</h5>
-                  <h5 className={errorClass}>No inspiration was found... Try again! {JSON.stringify(this.state.error)}</h5>
+                  <h5 className={errorClass}>No inspiration was found... Try again!</h5>
                 </div>
                 <Snap ref="snap" className="hide" handlePhotoChanged={this.handlePhotoChanged} />
                 <button onClick={this.snapPhoto} className={buttonClass+" fade btn-floating btn-large waves-effect waves-light"}><i className="large material-icons">photo_camera</i></button>
