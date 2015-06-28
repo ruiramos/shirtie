@@ -19,7 +19,7 @@ export class Preview extends BaseComponent {
     var that = this;
 
     this.handler = StripeCheckout.configure({
-      key: 'pk_test_hPQEW3iYvtdD31MedlLl2m29',
+      key: 'pk_live_9SsUSB1JCHQRRCOu71tOUXVP',
       image: window.host+'/images/shirtie.png',
       token: function(token) {
         that.props.setLoading(true);
