@@ -1,11 +1,9 @@
 
 var request = require('superagent');
 
-var host = 'http://localhost:3000';
-
 module.exports = {
   postImage: function(image, callback){
-    request.post(host + '/upload')
+    request.post(window.host + '/upload')
       .send({image: image})
       .end(callback);
   },
@@ -15,7 +13,7 @@ module.exports = {
     data.append('img', image);
 
     jQuery.ajax({
-        url: host + '/upload',
+        url: window.host + '/upload',
         data: data,
         cache: false,
         contentType: false,
@@ -24,10 +22,17 @@ module.exports = {
         timeout: 9999,
         success: function(data){
           callback(null, data);
-        }, 
+        },
         error: function(error){
           callback(error);
         }
     });
+  },
+
+  purchase: function(formData, token, imageName, fn){
+    console.log(formData, token, imageName);
+    request.post(window.host + '/purchase')
+      .send({token: token.id, formData: formData, imageName: imageName})
+      .end(fn);
   }
 };

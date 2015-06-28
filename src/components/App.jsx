@@ -3,6 +3,7 @@ import React from 'react';
 var Snap = require('./Snap').Snap,
     BaseComponent = require('./BaseComponent').BaseComponent,
     Preview = require('./Preview').Preview,
+    Confirmation = require('./Confirmation').Confirmation,
     ImageActions = require('../actions/ImageActions'),
     cx = require('classnames');
 
@@ -13,7 +14,7 @@ export class App extends BaseComponent {
   constructor(){
     super();
     this.state = {};
-    this.bindMethods('snapPhoto', 'handlePhotoChanged');
+    this.bindMethods('snapPhoto', 'handlePhotoChanged', 'handleOrderComplete');
   }
 
   handlePhotoChanged(evt){
@@ -50,9 +51,15 @@ export class App extends BaseComponent {
     this.refs.snap.triggerButton();
   }
 
+  handleOrderComplete(res){
+    console.log('order complete', res);
+    this.setState({orderId: res.order_id});
+  }
+
   render() {
     var snapClass = 'snap ' + (this.state.imagePath ? 'hidden' : 'visible');
-    var previewClass = 'preview ' + (this.state.imagePath ? 'visible' : 'hidden');
+    var previewClass = 'preview ' + (this.state.imagePath && !this.state.print_order_id ? 'visible' : 'hidden');
+    var confirmationClass = 'confirmation ' + (this.state.orderId ? 'visible' : 'hidden');
     var spinnerClass = this.state.loading ? '' : 'hide';
     var buttonClass  = this.state.loading ? 'faded' : '';
     var errorClass   = this.state.error ? '' : 'hide';
@@ -127,7 +134,10 @@ export class App extends BaseComponent {
 
             <Preview
               previewImage={this.state.imagePath}
+              previewImageName={this.state.image}
               classes={previewClass}
+              handleOrderComplete={this.handleOrderComplete}
+              orderId={this.state.orderId}
             />
 
             </div>

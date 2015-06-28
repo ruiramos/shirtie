@@ -48,7 +48,7 @@ app.post('/upload',
     }
   );
 
-app.post('/place', require('./routes/createAsset'), require('./routes/confirmOrder'));
+app.post('/purchase', require('./routes/chargeStripe'), require('./routes/createAsset'), require('./routes/confirmOrder'))
 
 app.get('*', function(req, res){ res.sendFile(path.resolve(__dirname, '../index.html')); });
 
