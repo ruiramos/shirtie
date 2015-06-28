@@ -38,8 +38,8 @@ var requestOptions = {
   body: orderObject
 }
 
-request.get(requestOptions, function(err, res){
-  console.log('order placed', err, res.body);
+request.get(requestOptions, function(err, res2){
+  console.log('order placed', err, res2.body);
   res.send({a: "ok"})
 })
 

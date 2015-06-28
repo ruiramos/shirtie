@@ -12,6 +12,8 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use(bodyParser.json());
+
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
 // Endpoints
@@ -29,11 +31,16 @@ app.post('/upload',
     });
 
   },
-  require('./routes/createAsset'),
-  function(req, res){ res.send({error: null, art: req.query.art }) }
+  function(req, res){
+    res.send({
+      error: null,
+      imageName: req.query.art.imageName,
+      imagePath: req.query.art.publicUri
+    })
+    }
   );
 
-app.get('/place', require('./routes/confirmOrder'))
+app.post('/place', require('./routes/createAsset'), require('./routes/confirmOrder'))
 
 
 

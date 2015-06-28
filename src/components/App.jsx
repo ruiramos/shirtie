@@ -55,11 +55,12 @@ export class App extends BaseComponent {
             </div>
           </nav>
         </header>
-        
+
         <main className="container valign-wrapper">
           <div className="row valign center-align main-row">
             <div className="col s12 m10 offset-m1 l10 offset-l1">
               <h5>Snap a pic to make a Shirtie!</h5>
+              <Snap ref="snap" className="hide" handlePhotoChanged={this.handlePhotoChanged} />
               <button onClick={this.snapPhoto} className="btn-floating btn-large waves-effect waves-light"><i className="large material-icons">photo_camera</i></button>
               <div className="preloader-wrapper hide active">
                 <div className="spinner-layer spinner-blue">
@@ -102,6 +103,7 @@ export class App extends BaseComponent {
                   </div>
                 </div>
               </div>
+
               <div className="card center-align">
                 <div className="card-image">
                   <img ref="imageContainer" />
@@ -121,9 +123,9 @@ export class App extends BaseComponent {
                   <a href="#">Wear it!</a>
                 </div>
                 <div className="hide">
-                  <Snap ref="snap" className="hide" handlePhotoChanged={this.handlePhotoChanged} />
                 </div>
               </div>
+
             </div>
           </div>
         </main>

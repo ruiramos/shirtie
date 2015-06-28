@@ -16,6 +16,9 @@ var request  = require('request'),
 var assetUploadUrl = 'https://api.kite.ly/v1.4/asset/sign';
 
 var uploadArt = function(req, res, next){
+  var imagePath = path.resolve(__dirname, '../uploads') + '/' + req.body.imagePath;
+
+  console.log('uploading', imagePath)
 
   request({
     uri: assetUploadUrl,
@@ -47,7 +50,7 @@ var uploadArt = function(req, res, next){
     }
 
     var bufs = [];
-    var stream = fs.createReadStream(req.query.art.fullPath);
+    var stream = fs.createReadStream(imagePath);
     stream.on('data', function(d){ bufs.push(d); });
     stream.on('end', function(){
       var buf = Buffer.concat(bufs);
@@ -55,11 +58,9 @@ var uploadArt = function(req, res, next){
       options.headers['content-length'] = buf.length;
 
       var req = https.request(options, function(res) {
-        res.setEncoding('utf8');
-        res.on('end', function(){
-          console.log(err, 'uploaded it to amazon', s3Url);
-          next();
-        })
+        //res.setEncoding('utf8');
+        console.log(err, 'uploaded it to amazon', s3Url);
+        next();
       });
 
       req.on('error', function(e) {
