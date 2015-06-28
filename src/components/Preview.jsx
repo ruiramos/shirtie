@@ -3,6 +3,7 @@ import React from 'react';
 require('../styles/preview.less');
 
 var BaseComponent = require('./BaseComponent').BaseComponent,
+    Confirmation = require('./Confirmation').Confirmation,
     OrderActions = require('../actions/OrderActions');
 
 export class Preview extends BaseComponent {
@@ -10,7 +11,7 @@ export class Preview extends BaseComponent {
     super();
     this.state = {type: 'tshirt'};
 
-    this.bindMethods('sendFirstForm', 'handleTypeChange', 'handlePurchase');
+    this.bindMethods('sendFirstForm', 'handlePurchase');
   }
 
   componentDidMount() {
@@ -37,19 +38,9 @@ export class Preview extends BaseComponent {
       form1: formData,
       email: this.refs.emailInput.getDOMNode().value,
       type: v,
-      cost: v === 'tshirt' ? 990 : 1299
+      cost: v === 'tshirt' ? 990 : 1990
 
     });
-  }
-
-  handleTypeChange(){
-    // @todo doesnt work
-    var v = this.refs.typeSelect.getDOMNode().value;
-    console.log(v);
-    this.setState({
-      type: v,
-      cost: v === 'tshirt' ? 990 : 1299
-    })
   }
 
   handlePurchase(){
@@ -169,13 +160,10 @@ export class Preview extends BaseComponent {
           </div>
 
           <div className={confirmationThing}>
-            <div>
-              <span className="card-title activator grey-text text-darken-4">Order placed!<i className="material-icons right red-text">photo</i></span>
-              <p>Your order is on its way.</p>
-
-              <p>all ok! your id: {this.props.orderId}</p>
-              <a href="/">Go back!</a>
-            </div>
+            <Confirmation
+              orderId={this.props.orderId}
+              formData={this.state.form1}
+            />
           </div>
 
           </div>
