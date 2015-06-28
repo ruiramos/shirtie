@@ -37,19 +37,9 @@ export class Preview extends BaseComponent {
       form1: formData,
       email: this.refs.emailInput.getDOMNode().value,
       type: v,
-      cost: v === 'tshirt' ? 990 : 1299
+      cost: v === 'tshirt' ? 990 : 1990
 
     });
-  }
-
-  handleTypeChange(){
-    // @todo doesnt work
-    var v = this.refs.typeSelect.getDOMNode().value;
-    console.log(v);
-    this.setState({
-      type: v,
-      cost: v === 'tshirt' ? 990 : 1299
-    })
   }
 
   handlePurchase(){

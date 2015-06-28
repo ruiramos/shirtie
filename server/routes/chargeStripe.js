@@ -5,7 +5,6 @@ var config = require('../config'),
 var ChargeStripe = function(req, res, next){
   var t = req.body.token;
   var form = req.body.formData;
-  console.log(req.body);
   var ammount;
 
   form.forEach(function(field){
@@ -13,7 +12,7 @@ var ChargeStripe = function(req, res, next){
       if(field.value === 'tshirt'){
         ammount = 990;
       } else {
-        ammount = 1290;
+        ammount = 1990;
       }
     } else if(field.name === 'email'){
       email = field.value;
