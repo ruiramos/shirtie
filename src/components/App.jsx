@@ -31,12 +31,15 @@ export class App extends BaseComponent {
     this.setState({loading: true});
 
     ImageActions.postImage(file, (err, res) => {
+            alert(err)
+
       if (err) {
         return this.setState({
           loading: false,
           error:err
         });
       }
+
 
       this.setState({
         loading: false,
