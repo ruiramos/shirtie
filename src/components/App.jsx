@@ -102,9 +102,27 @@ export class App extends BaseComponent {
                   </div>
                 </div>
               </div>
-              <div className="card-panel center-align hide">
-                <Snap ref="snap" handlePhotoChanged={this.handlePhotoChanged} />
-                <img ref="imageContainer" />
+              <div className="card center-align">
+                <div className="card-image">
+                  <img ref="imageContainer" />
+                  <img src="http://materializecss.com/images/sample-1.jpg"></img>
+                  <span className="card-title">Card Title</span>
+                </div>
+                <div className="card-content left-align">
+                  <blockquote>
+                    Multiparts...
+                    <br/>
+                    <i><small>- Rui Ramos</small></i>
+                  </blockquote>
+                  <p>I am a very simple card. I am good at containing small bits of information.
+                  I am convenient because I require little markup to use effectively.</p>
+                </div>
+                <div className="card-action">
+                  <a href="#">Wear it!</a>
+                </div>
+                <div className="hide">
+                  <Snap ref="snap" className="hide" handlePhotoChanged={this.handlePhotoChanged} />
+                </div>
               </div>
             </div>
           </div>
