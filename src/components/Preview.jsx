@@ -170,7 +170,10 @@ export class Preview extends BaseComponent {
             <span className="card-title grey-text text-darken-4">Your finest moment. <i className="material-icons right">close</i></span>
             <br/>
             <div className="card-image">
+
+              <img src="/shirt.png" className="preview-shirt" />
               <img src={window.host + this.props.previewImage}></img>
+
             </div>
           </div>
           <div className="hide">

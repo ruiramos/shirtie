@@ -148,8 +148,8 @@ export class App extends BaseComponent {
           <div className="container hide-on-small-only">
             <div className="row">
               <div className="col l12 s12">
-                <h5 className="white-text">Footer Content</h5>
-                <p className="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                <h5 className="white-text">Shirtie.</h5>
+                <p className="grey-text text-lighten-4">Wear your "finest" moments.</p>
               </div>
             </div>
           </div>
