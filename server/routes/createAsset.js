@@ -1,7 +1,9 @@
 var request  = require('request'),
     config   = require('../config.json'),
     fs = require('fs'),
-     tunnel = require('tunnel');
+    https = require('https'),
+    url = require('url'),
+    tunnel = require('tunnel');
 
 // var tunnelingAgent = tunnel.httpsOverHttp({
 //   ca: [ fs.readFileSync('/Users/rui/Desktop/charles-ssl-proxying-certificate.crt')],
@@ -14,7 +16,6 @@ var request  = require('request'),
 var assetUploadUrl = 'https://api.kite.ly/v1.4/asset/sign';
 
 var uploadArt = function(req, res, next){
-console.log('oi', req.query.art);
 
   request({
     uri: assetUploadUrl,
@@ -33,24 +34,44 @@ console.log('oi', req.query.art);
 
     console.log('sending request to ', signedAmazonUrl)
 
-    request.put({
-      uri: signedAmazonUrl,
+    var options = {
+      hostname: url.parse(signedAmazonUrl).host,
+      path: url.parse(signedAmazonUrl).path,
       // agent: tunnelingAgent,
+      port: 443,
+      method: 'PUT',
       headers: {
         'content-type': 'image/jpeg',
-        'x-amz-acl': 'private'
-      },
-      formData: {
-        image: fs.createReadStream(req.query.art.fullPath)
+        'x-amz-acl': 'private',
       }
-    }, function(err_, res_){
-      console.log('uploaded it to amazon', s3Url);
-      next();
-    })
+    }
+
+    var bufs = [];
+    var stream = fs.createReadStream(req.query.art.fullPath);
+    stream.on('data', function(d){ bufs.push(d); });
+    stream.on('end', function(){
+      var buf = Buffer.concat(bufs);
+
+      options.headers['content-length'] = buf.length;
+
+      var req = https.request(options, function(res) {
+        res.setEncoding('utf8');
+        res.on('end', function(){
+          console.log(err, 'uploaded it to amazon', s3Url);
+          next();
+        })
+      });
+
+      req.on('error', function(e) {
+        console.log('problem with request: ' + e.message);
+      });
+
+      // write data to request body
+      req.write(buf);
+      req.end();
+    });
 
   })
-
-
 
 }
 
