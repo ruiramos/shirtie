@@ -72,7 +72,7 @@ export class App extends BaseComponent {
             <div className="container">
               <div className="nav-wrapper">
                 <a href="#" className="brand-logo page-title">
-
+                  <img src="/src/images/logo.png" className="logo left"/>
                   <h1>Shirtie</h1>
                 </a>
               </div>
