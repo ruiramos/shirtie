@@ -29,8 +29,7 @@ app.post('/upload',
   require('./routes/upload'),
   require('./routes/quotes'),
   function(req, res, next){
-    if (!req.query.quote) {
-      res.status(500);
+    if (!req.query || !req.query.quote) {
       return res.send({error:'No inspiration was found...'});
     }
 
@@ -45,7 +44,7 @@ app.post('/upload',
       error: null,
       imageName: req.query.art.imageName,
       imagePath: req.query.art.publicUri
-    })
+    });
     }
   );
 

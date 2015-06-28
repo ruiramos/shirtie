@@ -22,6 +22,9 @@ module.exports = {
         timeout: 9999,
         success: function(data){
           callback(null, data);
+        },
+        error: function(error){
+          callback(error);
         }
     });
   },
