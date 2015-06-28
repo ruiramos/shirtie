@@ -47,6 +47,7 @@ export class App extends BaseComponent {
     var snapClass = 'snap ' + (this.state.imagePath ? 'hidden' : 'visible');
     var previewClass = 'preview ' + (this.state.imagePath ? 'visible' : 'hidden');
     var spinnerClass = this.state.loading ? '' : 'hide';
+    var buttonClass  = this.state.loading ? 'faded' : '';
 
     return (
       <body className="app">
@@ -69,7 +70,7 @@ export class App extends BaseComponent {
               <div className={snapClass}>
                 <h5>Snap a pic to make a Shirtie!</h5>
                 <Snap ref="snap" className="hide" handlePhotoChanged={this.handlePhotoChanged} />
-                <button onClick={this.snapPhoto} className="btn-floating btn-large waves-effect waves-light"><i className="large material-icons">photo_camera</i></button>
+                <button onClick={this.snapPhoto} className={buttonClass+" fade btn-floating btn-large waves-effect waves-light"}><i className="large material-icons">photo_camera</i></button>
               </div>
 
               <div className={spinnerClass + " preloader-wrapper active"}>

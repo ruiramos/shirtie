@@ -5,7 +5,6 @@ require('../styles/preview.less');
 export class Preview extends React.Component {
   componentDidMount() {
     $(document).ready(function() {
-      console.log('asjdlaskdjaklsdj');
       $('select').material_select();
     });
   }
@@ -91,7 +90,7 @@ export class Preview extends React.Component {
             <span className="card-title grey-text text-darken-4">Your finest moment. <i className="material-icons right">close</i></span>
             <br/>
             <div className="card-image">
-              <img src={'http://192.168.88.209:3000' + this.props.previewImage} className="z-depth-1"></img>
+              <img src={'http://192.168.88.209:3000' + this.props.previewImage}></img>
             </div>
           </div>
           <div className="hide">
