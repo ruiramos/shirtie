@@ -12,15 +12,12 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use(express.static('uploads'));
-
-// Parse body JSON in post requests
-// app.use(bodyParser.json({limit:'50mb'}));
+app.use('/uploads', express.static(__dirname + '/uploads'));
 
 // Endpoints
 app.get('/quotes', require('./routes/quotes'));
 app.post('/upload',
-  multer({ dest: './uploads/'}),
+  multer({ dest: './server/uploads/'}),
   require('./routes/upload'),
   require('./routes/quotes'),
   function(req, res, next){
@@ -37,6 +34,9 @@ app.post('/upload',
   );
 
 app.get('/place', require('./routes/confirmOrder'))
+
+
+
 
 var server = app.listen(3000, function () {
   var address = server.address();

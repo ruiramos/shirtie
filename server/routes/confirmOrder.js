@@ -40,6 +40,7 @@ var requestOptions = {
 
 request.get(requestOptions, function(err, res){
   console.log('order placed', err, res.body);
+  res.send({a: "ok"})
 })
 
 }
