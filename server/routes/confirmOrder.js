@@ -15,7 +15,6 @@ var orderObject = {
       "country_code": "GBR"
     },
     "customer_email": "deon@kite.ly",
-    "customer_phone": "+44 (0)784297 1234",
     "jobs": [{
       "options": {
         "garment_size": "M",

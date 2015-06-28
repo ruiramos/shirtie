@@ -2,8 +2,8 @@ import React from 'react';
 
 var Snap = require('./Snap').Snap,
     BaseComponent = require('./BaseComponent').BaseComponent,
-    ImageActions = require('../actions/ImageActions'),
-    imageToBase64 = require('../helpers/imageBase64');
+    Preview = require('./Preview').Preview,
+    ImageActions = require('../actions/ImageActions');
 
 require('../styles/app.less');
 
@@ -104,31 +104,7 @@ export class App extends BaseComponent {
                 </div>
               </div>
 
-              <div className="card center-align">
-                <div className="card-image">
-                  <img ref="imageContainer" />
-                  <img src="http://materializecss.com/images/sample-1.jpg"></img>
-                  <span className="card-title">Card Title</span>
-                </div>
-                <div className="card-content left-align">
-                  <blockquote>
-                    Multiparts...
-                    <br/>
-                    <i><small>- Rui Ramos</small></i>
-                  </blockquote>
-                  <p>I am a very simple card. I am good at containing small bits of information.
-                  I am convenient because I require little markup to use effectively.</p>
-                </div>
-                <div className="card-action activator">
-                  <a href="#">Wear it!</a>
-                </div>
-                <div className="card-reveal">
-                  <span className="card-title grey-text text-darken-4">Card Titleclose</i></span>
-                  <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                </div>
-                <div className="hide">
-                </div>
-              </div>
+            <Preview />
 
             </div>
           </div>
