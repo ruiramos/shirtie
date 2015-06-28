@@ -74,6 +74,8 @@ export class Preview extends BaseComponent {
     var confirmationThing = 'confirmation ' + (this.props.orderId ? 'visible':'hidden');
     var formsThing = 'confirmation ' + (!this.props.orderId ? 'visible':'hidden');
 
+    var secondFormPStyle = {'textAlign': 'center', 'margin':'50px 0 40px'};
+
     return (
       <div className={this.props.classes}>
         <br/>
@@ -129,8 +131,8 @@ export class Preview extends BaseComponent {
                   <div className="input-field col s12">
                     <select ref="typeSelect" name="type" id="type" onChange={this.handleTypeChange} value={this.state.type}>
                       <option value="" disabled>Type</option>
-                      <option value="tshirt">T-Shirt (£9.99)</option>
-                      <option value="hoodie">Hoodie (£12.99)</option>
+                      <option value="tshirt">T-Shirt (£9.90)</option>
+                      <option value="hoodie">Hoodie (£19.90)</option>
                     </select>
                     <label>Type:</label>
                   </div>
@@ -149,7 +151,9 @@ export class Preview extends BaseComponent {
               </form>
 
             <form ref="theSecondForm" className={secondFormClass} action="/charge" method="POST">
-              <button id="stripeButton" type="button" onClick={this.handlePurchase}>Purchase</button>
+              <p style={secondFormPStyle}>
+                <button id="stripeButton" className="btn waves-effect waves-light" type="button" onClick={this.handlePurchase}>Pay securely using Stripe</button>
+              </p>
             </form>
           </div>
 
@@ -162,7 +166,7 @@ export class Preview extends BaseComponent {
 
           </div>
 
-          <div className={formsThing + " card-action"}>
+          <div className={firstFormClass + " card-action"}>
             <a onClick={this.sendFirstForm} style={styles.link}>Wear it!</a>
           </div>
 

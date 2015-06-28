@@ -84,7 +84,7 @@ export class App extends BaseComponent {
           <div className="row valign center-align main-row">
             <div className="col s12 m10 offset-m1 l10 offset-l1">
               <div className={snapClass}>
-                <h5 className={titleErrorClass}>Snap a pic to make a Shirtie!</h5>
+                <h5 className={titleErrorClass}>Snap a pic to create your Shirtie!</h5>
                 <h5 className={errorClass}>No inspiration was found... Try again!</h5>
                 <Snap ref="snap" className="hide" handlePhotoChanged={this.handlePhotoChanged} />
                 <button onClick={this.snapPhoto} className={buttonClass+" fade btn-floating btn-large waves-effect waves-light"}><i className="large material-icons">photo_camera</i></button>
