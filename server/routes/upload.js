@@ -9,15 +9,13 @@ var request  = require('request'),
 var exclude = ['black and white', 'isolated', 'adult', 'portrait','adult'];
 
 var imageUpload = function(req, res, next){
-  console.log('entering quotes');
-
   var image = req.files.img;
 
   var options = {
     uri: 'https://api.clarifai.com/v1/tag/',
     method: 'POST',
     headers: {
-      'Authorization': 'Bearer ' + config.clarifai_token
+      'Authorization': 'Bearer ' + (req._token || config.clarifai_token)
     }
   };
 
