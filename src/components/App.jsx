@@ -3,7 +3,9 @@ import React from 'react';
 var Snap = require('./Snap').Snap,
     BaseComponent = require('./BaseComponent').BaseComponent,
     Preview = require('./Preview').Preview,
-    ImageActions = require('../actions/ImageActions');
+    ImageActions = require('../actions/ImageActions'),
+    cx = require('classnames');
+
 
 require('../styles/app.less');
 
@@ -25,19 +27,16 @@ export class App extends BaseComponent {
         file = files[0];
     }
 
-    ImageActions.postImage(file, (err, res) => this.setState({
-      image: res.,
+    this.setState({loading: true});
 
-    }));
-
-    // imageToBase64(file, function(data){
-    //   that.refs.imageContainer.getDOMNode().src = data;
-    //   ImageActions.postImage(data, function(error, response){
-    //     if (response.status === 200 && response.body.status_code === 'OK') {
-    //       console.log('got response', response.body.results[0].result.tag);
-    //     }
-    //   });
-    // });
+    ImageActions.postImage(file, (err, res) => {
+      console.log('got', res);
+      this.setState({
+        loading: false,
+        image: res.imageName,
+        imagePath: res.imagePath
+      })
+    });
   }
 
   snapPhoto(){
@@ -45,6 +44,10 @@ export class App extends BaseComponent {
   }
 
   render() {
+    var snapClass = 'snap ' + (this.state.imagePath ? 'hidden' : 'visible');
+    var previewClass = 'preview ' + (this.state.imagePath ? 'visible' : 'hidden');
+    var spinnerClass = this.state.loading ? '' : 'hide';
+
     return (
       <body className="app">
         <header className="page-header">
@@ -63,10 +66,13 @@ export class App extends BaseComponent {
         <main className="container valign-wrapper">
           <div className="row valign center-align main-row">
             <div className="col s12 m10 offset-m1 l10 offset-l1">
-              <h5>Snap a pic to make a Shirtie!</h5>
-              <Snap ref="snap" className="hide" handlePhotoChanged={this.handlePhotoChanged} />
-              <button onClick={this.snapPhoto} className="btn-floating btn-large waves-effect waves-light"><i className="large material-icons">photo_camera</i></button>
-              <div className="preloader-wrapper hide active">
+              <div className={snapClass}>
+                <h5>Snap a pic to make a Shirtie!</h5>
+                <Snap ref="snap" className="hide" handlePhotoChanged={this.handlePhotoChanged} />
+                <button onClick={this.snapPhoto} className="btn-floating btn-large waves-effect waves-light"><i className="large material-icons">photo_camera</i></button>
+              </div>
+
+              <div className={spinnerClass + " preloader-wrapper active"}>
                 <div className="spinner-layer spinner-blue">
                   <div className="circle-clipper left">
                     <div className="circle"></div>
@@ -108,7 +114,10 @@ export class App extends BaseComponent {
                 </div>
               </div>
 
-            <Preview />
+            <Preview
+              previewImage={this.state.imagePath}
+              classes={previewClass}
+            />
 
             </div>
           </div>

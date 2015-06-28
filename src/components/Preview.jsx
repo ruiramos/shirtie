@@ -1,5 +1,7 @@
 import React from 'react';
 
+require('../styles/preview.less');
+
 export class Preview extends React.Component {
   render() {
     var styles = {
@@ -9,7 +11,7 @@ export class Preview extends React.Component {
     };
 
     return (
-      <div>
+      <div className={this.props.classes}>
         <div className="card center-align">
 
           <div className="card-content left-align">
@@ -57,7 +59,7 @@ export class Preview extends React.Component {
           <div className="card-reveal">
             <span className="card-title grey-text text-darken-4">Here it is...</span>
             <div className="card-image">
-              <img src="http://materializecss.com/images/sample-1.jpg"></img>
+              <img src={'http://192.168.88.209:3000' + this.props.previewImage}></img>
             </div>
           </div>
           <div className="hide">

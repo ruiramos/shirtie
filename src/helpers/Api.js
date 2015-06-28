@@ -1,7 +1,7 @@
 
 var request = require('superagent');
 
-var host = 'http://localhost:3000';
+var host = 'http://192.168.88.209:3000';
 
 module.exports = {
   postImage: function(image, callback){
@@ -22,7 +22,7 @@ module.exports = {
         processData: false,
         type: 'POST',
         success: function(data){
-            console.log(data);
+          callback(null, data);
         }
     });
   }
