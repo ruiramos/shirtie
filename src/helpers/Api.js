@@ -19,7 +19,8 @@ module.exports = {
         contentType: false,
         processData: false,
         type: 'POST',
-        timeout: 9999,
+        timeout: 99999,
+        async: true,
         success: function(data){
           callback(null, data);
         },
