@@ -42,7 +42,7 @@ export class Preview extends BaseComponent {
       form1: formData,
       email: this.refs.emailInput.getDOMNode().value,
       type: v,
-      cost: v === 'tshirt' ? 1790 : 2490
+      cost: v === 'tshirt' ? 990 : 1990
 
     });
   }
@@ -140,8 +140,8 @@ export class Preview extends BaseComponent {
                   <div className="input-field col s12">
                     <select ref="typeSelect" name="type" id="type" onChange={this.handleTypeChange} value={this.state.type}>
                       <option value="" disabled>Type</option>
-                      <option value="tshirt">T-Shirt (£17.90)</option>
-                      <option value="hoodie">Hoodie (£24.90)</option>
+                      <option value="tshirt">T-Shirt (£9.90)</option>
+                      <option value="hoodie">Hoodie (£19.90)</option>
                     </select>
                     <label>Type:</label>
                   </div>
@@ -158,6 +158,8 @@ export class Preview extends BaseComponent {
                   </div>
                 </div>
               </form>
+
+
 
             <form ref="theSecondForm" className={secondFormClass} action="/charge" method="POST">
               <p style={secondFormPStyle}>
