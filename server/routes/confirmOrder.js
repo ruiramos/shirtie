@@ -34,7 +34,7 @@ var orderObject = {
       "assets": {
         "center_chest": req.query.assetUrl,
       },
-      "template_id": (formObj.type === 'tshirt' ? "gildan_tshirt" : (formObj.type === 'zip' ? "gildan_hoodie_zipped" : "gildan_hoodie"))
+      "template_id": (formObj.type === 'tshirt' ? "gildan_tshirt" : "gildan_hoodie")
     }]
   };
 

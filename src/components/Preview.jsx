@@ -94,7 +94,7 @@ export class Preview extends BaseComponent {
           <div className="card-content left-align">
             <div className={formsThing}>
               <span className="card-title activator grey-text text-darken-4">Almost there... <i className="material-icons right red-text">photo</i></span>
-              <p>Just tell us where to send your Shirtie! The shipping is free in the UK!</p>
+              <p>Just tell us where to send your Shirtie. The shipping is free in the UK!</p>
 
               <form ref="theFirstForm"  className={firstFormClass + " col s12"}>
                 <div className="row">
@@ -182,7 +182,7 @@ export class Preview extends BaseComponent {
           </div>
 
           <div className="card-reveal">
-            <span className="card-title grey-text text-darken-4">Your finest moment. <i className="material-icons right">close</i></span>
+            <span className="card-title grey-text text-darken-4">This is great. <i className="material-icons right">close</i></span>
             <br/>
             <div className="card-image">
               <div className="preview-shirt" style={styles.preview}>

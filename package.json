@@ -25,6 +25,7 @@
     "less": "^2.5.1",
     "less-loader": "^2.2.0",
     "node-libs-browser": "^0.5.2",
+    "page": "^1.6.3",
     "react": "^0.13.3",
     "request": "^2.58.0",
     "style-loader": "^0.12.3",

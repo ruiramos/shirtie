@@ -78,7 +78,7 @@ export class App extends BaseComponent {
           <nav className="top-nav">
             <div className="container">
               <div className="nav-wrapper">
-                <a href="#" className="brand-logo page-title">
+                <a href="/" className="brand-logo page-title">
                   <img src="/src/images/logo.png" className="logo left"/>
                   <h1>Shirtie</h1>
                 </a>
@@ -158,15 +158,15 @@ export class App extends BaseComponent {
           <div className="container hide-on-small-only">
             <div className="row">
               <div className="col l12 s12">
-                <h5 className="white-text">Shirtie.</h5>
-                <p className="grey-text text-lighten-4">Wear your "finest" moments.</p>
+                <h5 className="white-text">Shirtie</h5>
+                <p className="grey-text text-lighten-4">Wear great memories.</p>
               </div>
             </div>
           </div>
           <div className="footer-copyright">
             <div className="container">
-            © 2014 Copyright Text
-            <a className="grey-text text-lighten-4 right" href="#!">#HackTheVisual</a>
+            © 2015 Shirtie.co
+            <a className="grey-text text-lighten-4 right" href="http://hackthevisual.com" target="_blank">Born at #HackTheVisual</a>
             </div>
           </div>
         </footer>
