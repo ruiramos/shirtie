@@ -1,3 +1,4 @@
+
 var React = require('react');
 
 export class BaseComponent extends React.Component {

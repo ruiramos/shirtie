@@ -2,6 +2,7 @@ import React from 'react';
 
 require('../styles/snap.less');
 
+
 var BaseComponent = require('./BaseComponent').BaseComponent;
 
 export class Snap extends BaseComponent {

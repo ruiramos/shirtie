@@ -1,5 +1,6 @@
 var React = require('react'),
     App = require('./components/App.jsx').App,
+    Snap = require('./components/Snap.jsx').Snap,
     page = require('page');
 
 window.React = React;
@@ -8,7 +9,7 @@ window.host = (window.location.host.indexOf('localhost')!==-1) ? 'http://localho
 var routes = {};
 
 routes.index = function(){
-  React.render(<App />, document.body);
+  React.render(<App contentView={Snap} />, document.body);
 }
 
 page('/', routes.index);
