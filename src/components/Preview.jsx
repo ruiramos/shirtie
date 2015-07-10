@@ -11,7 +11,7 @@ export class Preview extends BaseComponent {
     super();
     this.state = {type: 'tshirt'};
 
-    this.bindMethods('sendFirstForm', 'handlePurchase');
+    this.bindMethods('sendFirstForm', 'handlePurchase', 'hidePreview');
   }
 
   componentDidMount() {
@@ -64,6 +64,12 @@ export class Preview extends BaseComponent {
       that.handler.close();
     });
   }
+
+  hidePreview(){
+    var that = this;
+    that.refs['card-reveal'].getDOMNode().style['display'] = 'none';
+    document.body.scrollTop = 0;
+  };
 
   render() {
     console.log(this.props.previewImage, this.props);
@@ -181,13 +187,14 @@ export class Preview extends BaseComponent {
             <a onClick={this.sendFirstForm} style={styles.link}>Wear it!</a>
           </div>
 
-          <div className="card-reveal">
-            <span className="card-title grey-text text-darken-4">This is great. <i className="material-icons right">close</i></span>
+          <div className="card-reveal" ref="card-reveal">
+            <span className="card-title grey-text text-darken-4">Such a great shirt! <i className="material-icons right">close</i></span>
             <br/>
             <div className="card-image">
               <div className="preview-shirt" style={styles.preview}>
                 <img src="/src/images/shirt.png"/>
               </div>
+              <button className="btn btn-primary" onClick={this.hidePreview}>Order it now!</button>
             </div>
           </div>
           <div className="hide">
