@@ -28,6 +28,7 @@
     "page": "^1.6.3",
     "react": "^0.13.3",
     "request": "^2.58.0",
+    "socketcluster-client": "^2.2.38",
     "style-loader": "^0.12.3",
     "superagent": "^1.2.0",
     "tunnel": "0.0.3",

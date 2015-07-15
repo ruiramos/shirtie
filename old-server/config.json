@@ -1,0 +1,20 @@
+{
+  "import_user": "d5431f29-8873-4561-b2ee-86fc65b1e1d2",
+  "import_key": "d5431f29-8873-4561-b2ee-86fc65b1e1d2:5h3HWy5lW2b/xxyg2ffNUZXLT1Yodj72v5mBDfInpLJdPMDXStSxZVn7smALepjqK/h9Qdwzh7zlWqvnQ3P6ww==",
+  "import_url": "http://www.brainyquote.com/search_results.html?q=",
+
+  "clarifai_id": "wKbTfGzRl_sjFWjWnw1we3hb2GbZoxadezARrtcm",
+  "clarifai_secret": "escG67pGyfhOb9PDT5w5DNonki3isUeyoJZi1azM",
+
+  "clarifai_token": "4FZslYHNssD7MdKvVrtdE1KoD39aEU" ,
+
+  "kite_test_key": "84c636c7997894418c87fa7e5f1c6f633fb70ad5",
+  "kite_test_secret": "59194f5188b281955b94a4a2e668ffeb105695bc",
+
+  "kite_live_key": "f1b01b86f447429fd491f5122ed1972438f13c1e",
+  "kite_live_secret": "86986c4500bd610a4e5b96e36d1b33bb65fe4d7b",
+
+  "stripe_test_key": "sk_test_eohbid4diNpcnmKUepK4uIF3",
+  "stripe_prod_key": "pk_live_9SsUSB1JCHQRRCOu71tOUXVP",
+  "stripe_live_key": "sk_live_xQGSkaJ8XEeBC8UjJrgkbYqK"
+}

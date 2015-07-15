@@ -1,62 +1,26 @@
-var express    = require('express'),
-    app        = express(),
-    bodyParser = require('body-parser'),
-    multer     = require('multer'),
-    path       = require('path'),
-    ImageGenerator = require('./controllers/imageGenerator');
+var SocketCluster = require('socketcluster').SocketCluster;
+var socketCluster = new SocketCluster({
+  balancers: 1, // Number of loadbalancer processes to launch
+  workers: 1, // Number of worker processes
+  stores: 1, // Number of store processes
+  port: 3210, // The port number on which your server should listen
+  appName: 'shirtie', // A unique name for your app
 
-// CORS Handling
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-  next();
-});
+  /* A JS file which you can use to configure each of your
+   * workers/servers - This is where most of your backend code should go
+   */
+  workerController: __dirname + '/worker.js',
 
-app.use(bodyParser.json());
+  /* JS file which you can use to configure each of your
+   * stores - Useful for scaling horizontally across multiple machines (optional)
+   */
+  storeController: __dirname + '/store.js',
 
-app.use('/images', express.static(__dirname + '/images'));
-app.use('/uploads', express.static(__dirname + '/uploads'));
-app.use('/dist', express.static(path.resolve(__dirname, '../dist')));
+  /* Maximum number of events a single socket can be subscribed to
+   * (security feature, optional, defaults to 100)
+   */
+  socketEventLimit: 100,
 
-// Endpoints
-app.get('/quotes', require('./routes/quotes'));
-
-app.post('/upload',
-  multer({
-    dest: path.resolve(__dirname , './uploads/'),
-    limits: {fieldSize: 100},
-  }),
-  require('./routes/token'),
-  require('./routes/upload'),
-  require('./routes/quotes'),
-  function(req, res, next){
-    if (!req.query || !req.query.quote) {
-      return res.send({error:'No inspiration was found...'});
-    }
-
-    ImageGenerator.generateImage(req.query.imageName, req.query.quote, function(err, finalImage){
-      req.query.art = finalImage;
-      next();
-    });
-
-  },
-  function(req, res){
-    res.send({
-      error: null,
-      imageName: req.query.art.imageName,
-      imagePath: req.query.art.publicUri
-    });
-    }
-  );
-
-app.post('/purchase', require('./routes/chargeStripe'), require('./routes/createAsset'), require('./routes/confirmOrder'))
-
-app.get('*', function(req, res){ res.sendFile(path.resolve(__dirname, '../index.html')); });
-
-
-
-var server = app.listen(3210, function () {
-  var address = server.address();
-  console.log('Example app listening at http://%s:%s', address.host, address.port);
+  // Whether or not to reboot the worker in case it crashes (defaults to true)
+  rebootWorkerOnCrash: true
 });
